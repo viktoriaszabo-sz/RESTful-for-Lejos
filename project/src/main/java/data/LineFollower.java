@@ -9,11 +9,11 @@ import lejos.utility.Delay;
 
 
 public class LineFollower extends Thread {
-    public static int SPEED = 300;
+    public static int speed = 300;
     public static final float BLACK_THRESHOLD = 0.1f;
-    public static int TURN_ANGLE = 220;
+    public static int turn_angle = 220;
     DataExchange DE; 
-    public static int MAX_OBSTACLES = 0; //changed this part of the original program
+    public static int max_obstacles = 0; //changed this part of the original program
 
     public LineFollower(DataExchange DE) { 
     	this.DE = DE; 
@@ -23,10 +23,10 @@ public class LineFollower extends Thread {
     {
     	System.out.println("Operation WALL-E initiated");
         
-    	MAX_OBSTACLES = 2;
+    	max_obstacles = 2;
     	int obstacleCount = 0;
     	
-        while(!Button.ESCAPE.isDown() || obstacleCount < MAX_OBSTACLES) 
+        while(!Button.ESCAPE.isDown() || obstacleCount < max_obstacles) 
         {
         	float[] colorSample = DataExchange.colorSample;
             
@@ -34,8 +34,8 @@ public class LineFollower extends Thread {
             {
             	if(colorSample [0] == Color.BLACK) {
                 	// On the line, move straight
-                	Motor.A.setSpeed(SPEED);
-                	Motor.B.setSpeed(SPEED);
+                	Motor.A.setSpeed(speed);
+                	Motor.B.setSpeed(speed);
                 	Motor.A.forward();
                     Motor.B.forward();
             	} 
@@ -43,16 +43,16 @@ public class LineFollower extends Thread {
                 	// Off the line, adjust direction
                 	if(colorSample[0] < BLACK_THRESHOLD) {
                     	// Too far to the right, turn left
-                    	Motor.A.setSpeed(SPEED / 4);
-                    	Motor.B.setSpeed(SPEED);
+                    	Motor.A.setSpeed(speed / 4);
+                    	Motor.B.setSpeed(speed);
                     	Motor.A.forward();
                         Motor.B.forward();
                 	} 
                 	else if (colorSample[0] > BLACK_THRESHOLD){
 
                     	// Too far to the left, turn right
-                    	Motor.A.setSpeed(SPEED);
-                    	Motor.B.setSpeed(SPEED / 2);
+                    	Motor.A.setSpeed(speed);
+                    	Motor.B.setSpeed(speed / 2);
                     	Motor.A.forward();
                         Motor.B.forward();
                 	}
@@ -62,7 +62,7 @@ public class LineFollower extends Thread {
             	
             	System.out.println("Obstacle detected!");
             	obstacleCount++;
-            	if (obstacleCount == MAX_OBSTACLES) { // stop after the second encounter
+            	if (obstacleCount == max_obstacles) { // stop after the second encounter
                     Motor.A.stop();
                     Motor.B.stop();
                     interrupt();
@@ -93,8 +93,8 @@ public class LineFollower extends Thread {
     					//return;
                     }
                 }
-            	Motor.A.setSpeed(SPEED);
-            	Motor.B.setSpeed(SPEED); // it adjust the wheels into straightforward position, bc linefollower confused it before
+            	Motor.A.setSpeed(speed);
+            	Motor.B.setSpeed(speed); // it adjust the wheels into straightforward position, bc linefollower confused it before
             	Motor.A.forward(); //we set it to move forward just a bit to make sure it gets straight
                 Motor.B.forward();
                 Delay.msDelay(75);
@@ -102,10 +102,10 @@ public class LineFollower extends Thread {
                 Motor.A.stop();
                 Motor.B.stop();
                 //actual avoidance happening
-                Motor.A.rotate(-TURN_ANGLE); //turns out sharply so that it can avoid the obstacle
+                Motor.A.rotate(-turn_angle); //turns out sharply so that it can avoid the obstacle
                 Delay.msDelay(10); 			//       actual avoidance happening
-                Motor.A.setSpeed(SPEED/4);  //sets the wheels for a turning angle 
-                Motor.B.setSpeed(SPEED);
+                Motor.A.setSpeed(speed/4);  //sets the wheels for a turning angle 
+                Motor.B.setSpeed(speed);
                 //Motor.A.rotate(-TURN_ANGLE/4);
             }
         //Motor.A.close();

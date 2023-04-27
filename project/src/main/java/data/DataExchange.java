@@ -21,33 +21,61 @@ public class DataExchange
     //ultrasonic sensor 
     public EV3UltrasonicSensor sonicSensor;
     
+    
+    private int speed = LineFollower.speed;
+    private int turnangle = LineFollower.turn_angle;
+    private int maxobs = LineFollower.max_obstacles;
+    private float securitydis = UltrasonicSensor.securityDistance;
+    
     public int getSpeed()
     {
-    	return LineFollower.SPEED;
+    	return speed;
     }
-    
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
     public int getTurnangle()
     {
-    	return LineFollower.TURN_ANGLE;
+    	return turnangle;
     }
+    public void setTurnangle(int turnangle)
+    {
+    	this.turnangle = turnangle;
+    }
+    
     public int getMaxobstacle()
     {
-    	return LineFollower.MAX_OBSTACLES;
+    	return maxobs;
+    }
+    public void setMaxobstacle(int maxobs)
+    {
+    	this.maxobs = maxobs;
     }
     public float getSecuritydistance()
     {
-    	return UltrasonicSensor.securityDistance;
+    	return securitydis;
+    }
+    public void setSecuritydistance(float securitydis)
+    {
+    	this.securitydis = securitydis;
     }
 
 
 
     public DataExchange() {} //constructor
+    public DataExchange(int speed, int turnangle, int maxobs, float securitydis)
+    {
+    	this.speed = speed;
+    	this.turnangle = turnangle;
+    	this.maxobs = maxobs;
+    	this.securitydis = securitydis;
+    }
 
     public static void setColorSample(float[] sample)
     {
     	colorSample[0] = sample[0];
     }
-    
     
     public static int CMD = 1; //which command the robot should do -- 1=linefollowing 2=obstacle-avoidance
     

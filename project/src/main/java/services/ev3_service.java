@@ -1,5 +1,6 @@
 package services;
 
+import java.awt.Robot;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -28,28 +29,36 @@ public class ev3_service {
 	@Context
 	HttpServletRequest request; 
 	@Context 
-	HttpServletResponse response; 
+	HttpServletResponse response;
+	private float securitydis; 
 	
 	//here we will type in all the different annotations for the robot 
 	//i kept the inclass code to see how ours should look like 
 	//all of them as @POST??
 
 	@POST
-	@Path("addsettingsbypost")
+	@Path("/ev3")
 	@Produces(MediaType.APPLICATION_JSON)//Method returns object as a JSON string
 	@Consumes("application/x-www-form-urlencoded") //Method can receive POSTed data from a html form
-	public void addSettingsByPost (@DefaultValue("300")@FormParam("speed") int speed, @DefaultValue("220")@FormParam("turnangle") String turnangle, 
-			@DefaultValue("2")@FormParam("maxobs") float maxobs, @DefaultValue("9") @FormParam("securitydis") int securitydis)
+	public void addSettingsByPost (@DefaultValue("300")@FormParam("speed") int speed, @DefaultValue("220")@FormParam("turnangle") int turnangle, 
+			@DefaultValue("2")@FormParam("maxobs") int maxobs, @DefaultValue("9") @FormParam("securitydis") float securitydis)
 	{
 		//we send the values as a form of a HTML form, and we keep the default values from the original code
-		//ev3.html
+		DataExchange d = new DataExchange(speed, turnangle, maxobs, securitydis);
+		
+		d.setSpeed(speed);
+		d.setTurnangle(turnangle);
+		d.setMaxobstacle(maxobs);
+		d.setSecuritydistance(securitydis);
+		
+		ArrayList<DataExchange> list = getDataExchangeList(speed, turnangle, maxobs, securitydis);
+		list.add(d);
 		
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/printev3.jsp");
 		//request dispatcher object 
 		//we need to create a new .jsp file within the webapp
 		
-		String something = "something"; //this part doesnt make sense, needs to be figured out 
-		request.setAttribute("ev3", something);
+		request.setAttribute("dataexchange", list);
 		//"ev3" will be the "${requestscope.ev3}" in the jsp file 
 		
 		try {
@@ -58,9 +67,14 @@ public class ev3_service {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+		
 	}
 	
-	
+		public ArrayList<DataExchange> getDataExchangeList(int speed, int turnangle, int maxobs, float securitydis){ //could be database handling even
+			ArrayList<DataExchange> list = new ArrayList<>();
+			list.add(new DataExchange(speed, turnangle, maxobs, securitydis));
+			return list;
+	}
 	
 	/*@GET
 	@Path("/info")
