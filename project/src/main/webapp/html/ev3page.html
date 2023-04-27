@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<script>
+
+function readInfo() {
+	var xmlhttp = new XMLHttpRequest(); 
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var jsonev3 = this.responseText; 
+			document.getElementById("resultone").innerHTML = jsonev3; 
+			var lejosev3 = JSON.parse(jsonev3); 
+			printInfo(); //any kind of other function in here from below
+		}
+	};
+	xmlhttp.open("GET", "/rest/project/info", true); 
+	xmltthp.send();
+}
+function printInfo(){
+	document.getElementById("onedog").innerHTML=s; //??
+	console.log("Welcome to our website");
+}
+</script>
+
+
+</head>
+<body>
+    <h1>Welcome to Team 3's project website</h1>
+    <button onclick='printInfo();'>Read info</button>
+  </body>
+</html>

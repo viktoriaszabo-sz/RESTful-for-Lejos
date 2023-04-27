@@ -9,11 +9,11 @@ import lejos.utility.Delay;
 
 
 public class LineFollower extends Thread {
-    public static final int SPEED = 300;
+    public static int SPEED = 300;
     public static final float BLACK_THRESHOLD = 0.1f;
     public static int TURN_ANGLE = 220;
     DataExchange DE; 
-    
+    public static int MAX_OBSTACLES = 0; //changed this part of the original program
 
     public LineFollower(DataExchange DE) { 
     	this.DE = DE; 
@@ -23,7 +23,7 @@ public class LineFollower extends Thread {
     {
     	System.out.println("Operation WALL-E initiated");
         
-    	final int MAX_OBSTACLES = 2;
+    	MAX_OBSTACLES = 2;
     	int obstacleCount = 0;
     	
         while(!Button.ESCAPE.isDown() || obstacleCount < MAX_OBSTACLES) 
@@ -83,7 +83,8 @@ public class LineFollower extends Thread {
                     	Motor.A.forward();
                     	Motor.B.backward();
                     	
-                		Sound.playSample(new File ("dis.wav"), Sound.VOL_MAX);
+                    	File celeb_music = new File ("dis.wav");
+                		Sound.playSample(celeb_music, Sound.VOL_MAX);
                 		Delay.msDelay(1000);
                 		
                 		Motor.A.stop();

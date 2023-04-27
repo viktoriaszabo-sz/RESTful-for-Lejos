@@ -21,6 +21,7 @@ public class HelloAppEngine extends HttpServlet {
     response.setCharacterEncoding("UTF-8");
 
     response.getWriter().print("Hello App Engine!\r\n");
+    response.getWriter().print("This is Team 3's web service project");
 
   }
 }

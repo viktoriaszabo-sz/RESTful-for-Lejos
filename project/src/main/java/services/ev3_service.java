@@ -4,7 +4,8 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.GET; 
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces; 
@@ -25,44 +26,43 @@ public class ev3_service {
 	@Context 
 	HttpServletResponse response; 
 	
-	
 	//here we will type in all the different annotations for the robot 
 	//i kept the inclass code to see how ours should look like 
-	
-	/*
-	 * 
+	//all of them as @POST??
+
 	@GET
-	@Path("/getdog")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Dog getDog() {
-		Dog d = new Dog (1, "Laika", 28); 
-		return d; 
+	@Path("/info")
+	@Produces(MediaType.TEXT_HTML)
+	public String info () {
+		return "<h1> This is a Team 3's EV3 robot service project! </h1>";
 	}
 	
-	
-	@GET
-	@Path("/getdogsbyweight/{p1}/{p2}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Dog> getDogsByName(@PathParam("p1") float low, @PathParam("p2") float high){
-		ArrayList<Dog> list = getDogList(); 
-		ArrayList<Dog> result = new ArrayList<>(); 
-		for (Dog d:list) {
-			if (d.getWeight()>= low && d.getWeight()<= high) //loops through the doglist between the weight 
-															//low and high set in the beginning 
-			{
-				result.add(d);
-			}
-		}
-		return result; 
+	@POST
+	@Path("/set_speed/{p1}")
+	public static void setSpeed(@PathParam("p1") int speed)
+	{
+		LineFollower.SPEED = speed;
 	}
 	
-	public ArrayList<Dog> getDogList(){ //could be database handling even
-		ArrayList<Dog> list = new ArrayList<>();
-		list.add(new Dog(1, "East Siberian Laika", 30));
-		list.add(new Dog(2, "White Shepard", 25));
-		list.add(new Dog(3, "Husky", 40));
-		list.add(new Dog(4, "Chiwuawa", 1));
-		return list;
+	@POST
+	@Path("/set_angle/{p1}")
+	public static void setAngle(@PathParam("p1") int angle)
+	{
+		LineFollower.TURN_ANGLE = angle;  
 	}
-	*/
+	
+	@POST
+	@Path("/set_max_ob/{p1}")
+	public static void setMaxOb(@PathParam("p1") int ob)
+	{
+		LineFollower.MAX_OBSTACLES = ob; 
+	}
+	
+	@POST
+	@Path("/set_dis/{p1}")
+	public static void setDistance(@PathParam("p1") int distance)
+	{
+		UltrasonicSensor.securityDistance = distance; 
+	}
+
 }
