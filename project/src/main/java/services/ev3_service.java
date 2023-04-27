@@ -39,6 +39,7 @@ public class ev3_service {
 	
 	@POST
 	@Path("/set_speed/{p1}")
+	@Produces(MediaType.APPLICATION_JSON)
 	public static void setSpeed(@PathParam("p1") int speed)
 	{
 		LineFollower.SPEED = speed;
@@ -46,6 +47,7 @@ public class ev3_service {
 	
 	@POST
 	@Path("/set_angle/{p1}")
+	@Produces(MediaType.APPLICATION_JSON)
 	public static void setAngle(@PathParam("p1") int angle)
 	{
 		LineFollower.TURN_ANGLE = angle;  
@@ -53,6 +55,7 @@ public class ev3_service {
 	
 	@POST
 	@Path("/set_max_ob/{p1}")
+	@Produces(MediaType.APPLICATION_JSON)
 	public static void setMaxOb(@PathParam("p1") int ob)
 	{
 		LineFollower.MAX_OBSTACLES = ob; 
@@ -60,6 +63,7 @@ public class ev3_service {
 	
 	@POST
 	@Path("/set_dis/{p1}")
+	@Produces(MediaType.APPLICATION_JSON)
 	public static void setDistance(@PathParam("p1") int distance)
 	{
 		UltrasonicSensor.securityDistance = distance; 
