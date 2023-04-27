@@ -20,6 +20,24 @@ public class DataExchange
     
     //ultrasonic sensor 
     public EV3UltrasonicSensor sonicSensor;
+    
+    public int getSpeed()
+    {
+    	return LineFollower.SPEED;
+    }
+    
+    public int getTurnangle()
+    {
+    	return LineFollower.TURN_ANGLE;
+    }
+    public int getMaxobstacle()
+    {
+    	return LineFollower.MAX_OBSTACLES;
+    }
+    public float getSecuritydistance()
+    {
+    	return UltrasonicSensor.securityDistance;
+    }
 
 
 
