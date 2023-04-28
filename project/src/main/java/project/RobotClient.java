@@ -6,15 +6,13 @@ import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.client.WebTarget;
 
 import data.DataExchange;
-import data.LineFollower;
-import data.UltrasonicSensor;
 
 public class RobotClient {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String uri = "http://127.0.0.1:8080/rest/dogservice/getdog/1";
-	    
+		String uri = "http://127.0.0.1:8080/rest/project/add_ev3"; //maybe add the form parameters
+		//String uri = "http://127.0.0.1:8080/rest/project/test"; //maybe add the form parameters
 		Client c=ClientBuilder.newClient();
 		//creates a new instance of a 'Client' class 
 		//This class represents an HTTP client that can be used to send requests to a server.
