@@ -8,7 +8,8 @@ follow video 14 with the following alterations:
 - when 'create user', do the following: --> 
         
 	create user team3@localhost identified by 'team3';
-        grant all on project.* to team3@localhost;
+        
+	grant all on project.* to team3@localhost;
 	
 - then exit root user and go to team3 
          
