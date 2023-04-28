@@ -11,8 +11,8 @@
 	    <property name="googleusername" value="root"/>
 	    <property name="googlepassword" value="password"/>
 	    <property name="googledatabasename" value="dogpoolmysqlrest"/>
-	    <property name="localusername" value="viktoria"/>
-	    <property name="localpassword" value="viki"/>
+	    <property name="localusername" value="team3"/>
+	    <property name="localpassword" value="team3"/>
 	    <property name="localdatabasename" value="projectdb"/>
 	    <property name="socketfactory" value="com.google.cloud.sql.mysql.SocketFactory"/>
 	    
