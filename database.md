@@ -1,4 +1,4 @@
-pls read this for our database: 
+pls read this for our database so that we all have to same stuff (makes further work easier for us): 
 
 follow video 14 with the following alterations: 
 - when in root user and create database --> 
