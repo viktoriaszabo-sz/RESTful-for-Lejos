@@ -6,7 +6,19 @@
   <runtime>java8</runtime>
 
   <system-properties>
-    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
-  </system-properties>
+	    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+	    <property name="drivername" value="com.mysql.cj.jdbc.Driver"/>
+	    <property name="googleusername" value="root"/>
+	    <property name="googlepassword" value="password"/>
+	    <property name="googledatabasename" value="dogpoolmysqlrest"/>
+	    <property name="localusername" value="viktoria"/>
+	    <property name="localpassword" value="viki"/>
+	    <property name="localdatabasename" value="projectdb"/>
+	    <property name="socketfactory" value="com.google.cloud.sql.mysql.SocketFactory"/>
+	    
+	<!-- the next value is from Google Cloud MySQL instance -->    
+	    <property name="cloudsqlinstance" value="restparamexamples:europe-west3:dogpoolmysqlrest"/>
+	    <property name="usessl" value="false"/>
+	</system-properties>
 
 </appengine-web-app>
