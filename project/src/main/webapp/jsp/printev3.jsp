@@ -10,10 +10,12 @@
 <body>
 <h1>EV3</h1>
 <ul>
-<c:forEach var="dataexchange" items="${requestScope.dataexchange }"> <!-- request.setAttribute("dogs", getDogList()); in public void readAll() -->
+
+<c:forEach var="dataexchange" items="${requestScope.dataexchange }"><!-- request.setAttribute("dogs", getDogList()); in public void readAll() -->
 	<li>${dataexchange.speed}: ${dataexchange.turnangle} / ${dataexchange.maxobs} / ${dataexchange.securitydis}
-	<!-- these are calling the getters  -->
 </c:forEach>
+
 </ul>
+<h1> this is a test</h1>
 </body>
 </html>
