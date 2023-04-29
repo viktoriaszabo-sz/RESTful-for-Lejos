@@ -14,6 +14,7 @@ follow video 14 with the following alterations:
 - then exit root user and go to team3 
          
 	 use projectdb;
+
          create table walle(id int auto_increment primary key not null, speed int not null, turnangle int not null, maxobs int not null, securitydis float (2,2) not null)engine=InnoDB;
 	 
 	 desc walle (just to see if all the changed are done) 
