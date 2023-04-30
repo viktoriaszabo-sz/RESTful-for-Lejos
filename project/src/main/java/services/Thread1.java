@@ -1,33 +1,50 @@
-package data;
+package services;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+
+import com.google.appengine.repackaged.com.google.common.net.MediaType;
+
+import conn.Connections;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 
+import java.io.IOException;
 
-public class DataExchange 
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.core.Context;
+
+import conn.Connections;
+
+import data.DataExchange;
+
+public class Thread1 //this thread is for the robot to read attributes from the database 
+					 // video 20 "Read a dog from the database and show it in a JSP file for update"
 {
-    //public static final int SPEED = 300;
-    //public static final float BLACK_THRESHOLD = 0.1f;
+	@Context
+	HttpServletRequest request; 
+	@Context 
+	HttpServletResponse response; 
+	
 
-    //colorSensor
-/*    public static EV3ColorSensor colorSensor;
-    public static final float[] colorSample = new float[1]; */
 
-    
-    //obstacledetector
-    //public static int TURN_ANGLE = 180; // angle to turn when avoiding obstacle
-    //public static double distance = 0.11;
-    
-    //ultrasonic sensor 
-/*    public EV3UltrasonicSensor sonicSensor; */
-    
-    
-    /*private int speed = LineFollower.speed;
-    private int turnangle = LineFollower.turn_angle;
-    private int maxobs = LineFollower.max_obstacles;
-    private float securitydis = UltrasonicSensor.securityDistance;*/
-    
-    
     
     //these variables are only here for testing without the other hardware components: 
     private int speed = 0;
@@ -55,19 +72,19 @@ public class DataExchange
     	this.turnangle = turnangle;
     }
     
-    public int getMaxobs()
+    public int getMaxobstacle()
     {
     	return maxobs;
     }
-    public void setMaxobs(int maxobs)
+    public void setMaxobstacle(int maxobs)
     {
     	this.maxobs = maxobs;
     }
-    public float getSecuritydis()
+    public float getSecuritydistance()
     {
     	return securitydis;
     }
-    public void setSecuritydis(float securitydis)
+    public void setSecuritydistance(float securitydis)
     {
     	this.securitydis = securitydis;
     }

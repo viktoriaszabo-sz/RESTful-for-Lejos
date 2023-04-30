@@ -78,7 +78,6 @@ public class ev3_service<Walle> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			d = new DataExchange(0, 0, 0, 0);
-			System.out.println("error inserting data into database");
 		}
 		finally { //its needed whether or not the try-catch block produces something, 
 					//so that the code still finishes
