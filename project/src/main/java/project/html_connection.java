@@ -51,7 +51,7 @@ public class html_connection {
 			url = new URL("http://192.168.1.210:8080/rest/tadaa/tuduu");
 //			url = new URL("http://192.168.0.101");
 			conn = (HttpURLConnection)url.openConnection();
-  			System.out.println(conn.toString()); //Tulostaa vain URLin
+  			System.out.println(conn.toString()); //Only prints the URL
 //			if (conn==null) {
 //	  			System.out.println("No connection!!!");
 //			}
