@@ -39,21 +39,24 @@ public class ev3_service<Walle> {
 	@Path("/add_ev")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //html form 
 	@Produces(MediaType.APPLICATION_JSON)
-	public DataExchange addEvByPost (@DefaultValue("300")@FormParam("speed") int speed, @DefaultValue("220")@FormParam("turnangle") int turnangle, 
-			@DefaultValue("2")@FormParam("maxobs") int maxobs, @DefaultValue("9") @FormParam("securitydis") float securitydis)
+	public DataExchange addEvByPost (@DefaultValue("300") @FormParam("speed") int speed, 
+									 @DefaultValue("220") @FormParam("turnangle") int turnangle, 
+									 @DefaultValue("2") @FormParam("maxobs") int maxobs, 
+									 @DefaultValue("9") @FormParam("securitydis") float securitydis)
 	{
 		DataExchange d = new DataExchange(speed, turnangle, maxobs, securitydis);
 		Connection conn=null; //we initialize the value
-		try{
+		/*try{
 			conn=Connections.getConnection();
 		}
 		catch(Exception e) {
 			d =new DataExchange(0,0, 0, 0); //if connection didnt work, it adds empty values to the database 
 			System.out.println("DataExchange not added");//For debugging if connection fails
 			return d;
-		}
+		}*/
 		//Using normal Prepared statement to add the values into the database
 		try {
+			conn=Connections.getConnection();
 			PreparedStatement pstmt=conn.prepareStatement("insert into walle(speed, turnangle, maxobs, securitydis) values(?,?,?,?)");
 			pstmt.setInt(1, speed);
 			pstmt.setInt(2, turnangle);
@@ -74,6 +77,8 @@ public class ev3_service<Walle> {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+			d = new DataExchange(0, 0, 0, 0);
+			System.out.println("error inserting data into database");
 		}
 		finally { //its needed whether or not the try-catch block produces something, 
 					//so that the code still finishes
