@@ -15,7 +15,7 @@ follow video 14 with the following alterations:
          
 	 use projectdb;
 
-         create table walle(id int auto_increment primary key not null, speed int not null, turnangle int not null, maxobs int not null, securitydis float (2,2) not null)engine=InnoDB;
+         create table walle(id int auto_increment primary key not null, speed int not null, turnangle int not null, maxobs int not null, securitydis float (3,1) not null)engine=InnoDB;
 	 
 	 desc walle (just to see if all the changes are done) 
 	 
