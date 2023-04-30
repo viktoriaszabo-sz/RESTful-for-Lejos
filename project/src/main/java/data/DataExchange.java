@@ -67,7 +67,7 @@ public class DataExchange
     public DataExchange(int speed, int turnangle, int maxobs, float securitydis)
     {
     	this.speed = speed;
-    	this.turnangle = turnangle;
+    	this.turnangle = turnangle;											//parameterized constructor for ev3_service
     	this.maxobs = maxobs;
     	this.securitydis = securitydis;
     }
