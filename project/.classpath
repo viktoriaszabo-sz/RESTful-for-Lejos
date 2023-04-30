@@ -35,7 +35,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Program Files/leJOS EV3/lib/ev3/dbusjava-src.zip"/>
-	<classpathentry kind="lib" path="C:/Program Files/leJOS EV3/lib/pc/ev3tools-src.zip"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jdk1.7.0_80/leJOS EV3/lib/ev3/dbusjava-src.zip"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jdk1.7.0_80/leJOS EV3/lib/pc/ev3tools-src.zip"/>
 	<classpathentry kind="output" path="target/project-0.1.0-SNAPSHOT/WEB-INF/classes"/>
 </classpath>
