@@ -23,7 +23,7 @@ follow video 14 with the following alterations:
 
 	 
 
-in video 15 just change the appengine-web.html file as: 
+in video 15 just change the appengine-web.xml file as: 
 -     <property name="localusername" value="team3"/>
 	    <property name="localpassword" value="team3"/>
       (so just change the localuser and localpassword)
