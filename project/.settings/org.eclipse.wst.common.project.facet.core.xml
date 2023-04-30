@@ -6,4 +6,5 @@
   <installed facet="jst.web" version="3.1"/>
   <installed facet="com.google.cloud.tools.eclipse.appengine.facets.standard" version="JRE8"/>
   <installed facet="wst.jsdt.web" version="1.0"/>
+  <installed facet="jst.jaxrs" version="2.1"/>
 </faceted-project>
