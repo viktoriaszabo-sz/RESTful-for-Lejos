@@ -1,34 +1,41 @@
-package project;
+/*package project;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Form;
 
 import data.DataExchange;
 
 public class RobotClient {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String uri = "http://127.0.0.1:8080/rest/project/add_ev3"; //maybe add the form parameters
-		//String uri = "http://127.0.0.1:8080/rest/project/test"; //maybe add the form parameters
-		Client c=ClientBuilder.newClient();
-		//creates a new instance of a 'Client' class 
-		//This class represents an HTTP client that can be used to send requests to a server.
-		
-		WebTarget wt=c.target(uri);
-		//creates a new WebTarget instance
-		//passing the uri, that we passed earlier
-		
-		Builder b=wt.request();
-		//we build an instance on the WebTarget object 
-		//This class is used to build and send requests to the server.
-		
-		DataExchange d=b.get(DataExchange.class); //retrieves the Dog object 
-		String s=b.get(String.class); //retrieves the object as a JSON string 
-		
-		System.out.println("Object: "+d);
-		System.out.println("JSON: "+s);
-	}
+    public static void main(String[] args) {
+        String uri = "http://127.0.0.1:8080/rest/project/add_ev";
+
+        try {
+            Client client = ClientBuilder.newClient();
+            WebTarget target = client.target(uri);
+            Builder builder = target.request();
+            
+            // Set any additional headers or query parameters here, if needed
+            // builder.header("X-Custom-Header", "Value");
+            // builder.queryParam("param", "value");
+            
+            // If you need to send form parameters with the request, create a Form object and use the form() method
+            Form form = new Form().param("speed", "speed").param("turnangle", "turnangle").param("maxobs", "maxobs").param("securitydis", "securitydis");
+            builder.post(Entity.form(form));
+            
+            DataExchange exchangeData = builder.get(DataExchange.class);
+            String jsonString = builder.get(String.class);
+            
+            //System.out.println("Data Exchange Object: " + exchangeData);
+            //System.out.println("JSON String: " + jsonString);
+            
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
 }
+*/
