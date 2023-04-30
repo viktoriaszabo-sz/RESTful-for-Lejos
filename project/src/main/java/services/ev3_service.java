@@ -53,6 +53,7 @@ public class ev3_service {
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		} 
+		//return list;
 	}
 	public ArrayList<DataExchange> getDataExchangeList(int speed, int turnangle, int maxobs, float securitydis)
 	{ //could be database handling even
