@@ -10,8 +10,8 @@ public class DataExchange
     //public static final float BLACK_THRESHOLD = 0.1f;
 
     //colorSensor
-    public static EV3ColorSensor colorSensor;
-    public static final float[] colorSample = new float[1];
+/*    public static EV3ColorSensor colorSensor;
+    public static final float[] colorSample = new float[1]; */
 
     
     //obstacledetector
@@ -19,13 +19,24 @@ public class DataExchange
     //public static double distance = 0.11;
     
     //ultrasonic sensor 
-    public EV3UltrasonicSensor sonicSensor;
+/*    public EV3UltrasonicSensor sonicSensor; */
     
     
-    private int speed = LineFollower.speed;
+    /*private int speed = LineFollower.speed;
     private int turnangle = LineFollower.turn_angle;
     private int maxobs = LineFollower.max_obstacles;
-    private float securitydis = UltrasonicSensor.securityDistance;
+    private float securitydis = UltrasonicSensor.securityDistance;*/
+    
+    
+    
+    //these variables are only here for testing without the other hardware components: 
+    private int speed = 0;
+    private int turnangle = 0;
+    private int maxobs = 0;
+    private float securitydis = 0;
+    
+    
+    
     
     public int getSpeed()
     {
@@ -62,7 +73,6 @@ public class DataExchange
     }
 
 
-
     public DataExchange() {} //constructor
     public DataExchange(int speed, int turnangle, int maxobs, float securitydis)
     {
@@ -72,7 +82,13 @@ public class DataExchange
     	this.securitydis = securitydis;
     }
 
-    public static void setColorSample(float[] sample)
+    
+    
+    
+    
+    
+    
+/*    public static void setColorSample(float[] sample)
     {
     	colorSample[0] = sample[0];
     }
@@ -88,5 +104,5 @@ public class DataExchange
 	public static int getCMD() {
 		return CMD;
 	}
-    
+    */
 }
