@@ -90,8 +90,8 @@ public class Thread1 //this thread is for the robot to read attributes from the 
     }
 
 
-    public DataExchange() {} //constructor
-    public DataExchange(int speed, int turnangle, int maxobs, float securitydis)
+    public Thread1() {} //constructor
+    public Thread1(int speed, int turnangle, int maxobs, float securitydis)
     {
     	this.speed = speed;
     	this.turnangle = turnangle;											//parameterized constructor for ev3_service
@@ -99,9 +99,6 @@ public class Thread1 //this thread is for the robot to read attributes from the 
     	this.securitydis = securitydis;
     }
 
-    
-    
-    
     
     
     
