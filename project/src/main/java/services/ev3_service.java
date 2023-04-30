@@ -39,7 +39,7 @@ public class ev3_service<Walle> {
 	@Path("/add_ev")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //html form 
 	@Produces(MediaType.APPLICATION_JSON)
-	public DataExchange addWalleByPost (@DefaultValue("300")@FormParam("speed") int speed, @DefaultValue("220")@FormParam("turnangle") int turnangle, 
+	public DataExchange addEvByPost (@DefaultValue("300")@FormParam("speed") int speed, @DefaultValue("220")@FormParam("turnangle") int turnangle, 
 			@DefaultValue("2")@FormParam("maxobs") int maxobs, @DefaultValue("9") @FormParam("securitydis") float securitydis)
 	{
 		DataExchange d = new DataExchange(speed, turnangle, maxobs, securitydis);

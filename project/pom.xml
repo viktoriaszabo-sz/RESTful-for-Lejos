@@ -96,20 +96,27 @@
         <!-- BEGIN: Added by Pena -->
 
 <!-- This is needed in the Google Cloud side to be able to connect to a database -->
-    <dependency>
-      <groupId>com.google.cloud.sql</groupId>
-      <artifactId>mysql-socket-factory-connector-j-8</artifactId>
-      <version>1.6.3</version>
-    </dependency>
-    
-<!-- This is for pooling the database connections - differs pretty much from e.g. Tomcat's way'-->    
-<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
-<dependency>
-    <groupId>com.zaxxer</groupId>
-    <artifactId>HikariCP</artifactId>
-    <version>4.0.3</version>
-</dependency>
-
+	<dependency>
+	  <groupId>com.google.cloud.sql</groupId>
+	  <artifactId>mysql-socket-factory-connector-j-8</artifactId>
+	  <version>1.6.3</version>
+	</dependency>
+	    
+	<!-- This is for pooling the database connections - differs pretty much from e.g. Tomcat's way'-->    
+	<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+	<dependency>
+	    <groupId>com.zaxxer</groupId>
+	    <artifactId>HikariCP</artifactId>
+	    <version>4.0.3</version>
+	</dependency>
+	
+	<!-- For connecting to MySQL database -->
+	<dependency>
+	   <groupId>mysql</groupId>
+	   <artifactId>mysql-connector-java</artifactId>
+	   <version>8.0.29</version>
+	 </dependency>
+	 
 <!-- This dependency is needed for annotations (e.g. @Path, @Consumes, @Produces etc.) in the REST-class-->
 	<dependency>
 	    <groupId>org.glassfish.jersey.media</groupId>
