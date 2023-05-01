@@ -8,12 +8,6 @@ import lejos.hardware.motor.Motor;
 import lejos.robotics.Color;
 import lejos.utility.Delay;
 
-
-//testing codeowner file permissions
-
-//testing codeowner
-
-
 public class LineFollower extends Thread {
     public static int SPEED = 300;
     public static final float BLACK_THRESHOLD = 0.1f;

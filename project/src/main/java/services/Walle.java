@@ -32,15 +32,15 @@ import data.DataExchange;
 @Path ("/project")
 public class Walle extends Thread{
 	
-	public Walle() {};
-	
+	public Walle() {}; //this is our main service class, this is where we put data into the database		
+						//and then read those from the database 
 	@Context
 	HttpServletRequest request; 
 	@Context
 	HttpServletResponse response;
 
 	
-	@POST
+	@POST					//this is for adding values to the database
 	@Path("/add_ev")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //html form 
 	@Produces(MediaType.APPLICATION_JSON)
@@ -50,20 +50,22 @@ public class Walle extends Thread{
 									 @DefaultValue("9") @FormParam("securitydis") float securitydis)
 	{
 		Attri a = new Attri(speed, turnangle, maxobs, securitydis);
-		Connection conn=null; //we initialize the value
+		//we need to create a new object from the Attri class 
+		//Attri class holds all the values that are needed for the services 
+				
+		Connection conn=null; //we initialize the connection value		
 		
-		//Using normal Prepared statement to add the values into the database
-		try {
+		try { 	//Using normal Prepared statement to add the values into the database
 			conn=Connections.getConnection();
 			PreparedStatement pstmt=conn.prepareStatement("insert into walle(speed, turnangle, maxobs, securitydis) values(?,?,?,?)");
 			pstmt.setInt(1, speed);
-			pstmt.setInt(2, turnangle);
-			pstmt.setInt(3, maxobs);
+			pstmt.setInt(2, turnangle);		//we set the inserted values into place 
+			pstmt.setInt(3, maxobs);		//check in db: "select * from walle;"
 			pstmt.setFloat(4, securitydis);
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.printStackTrace();			//this is for exception handling
 			a = new Attri(0, 0, 0, 0);
 		}
 		finally { //its needed whether or not the try-catch block produces something, 
@@ -80,36 +82,36 @@ public class Walle extends Thread{
 	}
 	
 	@GET
-	@Path("/read_ev")
-	public void readEV3() 
-    {
+	@Path("/read_ev")			//this is for reading the input values FROM the database
+	public void run() 			//this will be the main method of this thread
+    {							//the robot will read this attributes and act accordingly
 		ArrayList<DataExchange> list=new ArrayList<>();
 		Connection conn=null;
 		try{
-			conn=Connections.getConnection();
+			conn=Connections.getConnection(); 	//connection to db / mysql
 		
 			Statement stmt=conn.createStatement();
 			ResultSet RS=stmt.executeQuery("select * from walle");
 			while (RS.next()) {
-				DataExchange d = new DataExchange();
-				d.setSpeed(RS.getInt("speed"));
-				d.setTurnangle(RS.getInt("turnangle"));
-				d.setMaxobs(RS.getInt("maxobs"));
+				DataExchange d = new DataExchange(); //creating a new object from DataExchange, since
+				d.setSpeed(RS.getInt("speed"));		 // the robot will only work with the stuff put in that class
+				d.setTurnangle(RS.getInt("turnangle"));	//just like with the previous project 
+				d.setMaxobs(RS.getInt("maxobs"));		//these setters are in the DataExchange class as well
 				d.setSecuritydis(RS.getFloat("securitydis"));
 				list.add(d);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException e) {		//exception-handling
 			e.printStackTrace();
 		}
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/readev3.jsp");
-		//we need to create a new .jsp file within the webapp
+		//we need to create a new .jsp file within the webapp - or just to print it out on the screen
 		
 		request.setAttribute("dataexchange", list);
-		//"dogs" will be the "${requestscope.dogs}" in the jsp file 
+		//"dataexchange" will be the "${requestscope.dataexchange}" in the jsp file 
 		
 		try {
 			rd.forward(request, response);
-		} catch (ServletException | IOException e) {
+		} catch (ServletException | IOException e) { //exception-handling
 			e.printStackTrace();
 		} 
 	}
