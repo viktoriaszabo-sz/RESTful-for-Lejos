@@ -7,13 +7,13 @@ import lejos.hardware.sensor.EV3UltrasonicSensor;
 public class Attri 
 {
     //these variables are only here for testing without the other hardware components: 
-    private int speed = 0;
-    private int turnangle = 0;
-    private int maxobs = 0;
-    private float securitydis = 0;
+    private static int speed = 0;
+    private static int turnangle = 0;
+    private static int maxobs = 0;
+    private static float securitydis = 0;
     
     
-    public int getSpeed()
+    public static int getSpeed()
     {
     	return speed;
     }
@@ -21,7 +21,7 @@ public class Attri
         this.speed = speed;
     }
 
-    public int getTurnangle()
+    public static int getTurnangle()
     {
     	return turnangle;
     }
@@ -30,7 +30,7 @@ public class Attri
     	this.turnangle = turnangle;
     }
     
-    public int getMaxobs()
+    public static int getMaxobs()
     {
     	return maxobs;
     }
@@ -38,7 +38,7 @@ public class Attri
     {
     	this.maxobs = maxobs;
     }
-    public float getSecuritydis()
+    public static float getSecuritydis()
     {
     	return securitydis;
     }
