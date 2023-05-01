@@ -13,7 +13,7 @@ import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Form;
 
-import data.DataExchange;
+import data.Attri;
 import lejos.hardware.Button;
 //import runnables;
 
@@ -82,7 +82,7 @@ public class html_connection {
             Form form = new Form().param("speed", "speed").param("turnangle", "turnangle").param("maxobs", "maxobs").param("securitydis", "securitydis");
             builder.post(Entity.form(form));
             
-            DataExchange exchangeData = builder.get(DataExchange.class);
+            Attri exchangeAttri = builder.get(Attri.class);
             String jsonString = builder.get(String.class);
             
             //System.out.println("Data Exchange Object: " + exchangeData);

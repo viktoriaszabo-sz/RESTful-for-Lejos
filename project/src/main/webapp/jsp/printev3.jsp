@@ -11,8 +11,8 @@
 <h1>EV3</h1>
 <ul>
 
-<c:forEach var="dataexchange" items="${requestScope.dataexchange }"><!-- request.setAttribute("dogs", getDogList()); in public void readAll() -->
-	<li>${dataexchange.speed}: ${dataexchange.turnangle} / ${dataexchange.maxobs} / ${dataexchange.securitydis}
+<c:forEach var="attri" items="${requestScope.attri}"><!-- request.setAttribute("dogs", getDogList()); in public void readAll() -->
+	<li>${attri.speed}: ${attri.turnangle} / ${attri.maxobs} / ${attri.securitydis}
 </c:forEach>
 
 </ul>
