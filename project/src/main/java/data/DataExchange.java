@@ -30,6 +30,8 @@ import javax.ws.rs.core.Context;
 import conn.Connections;
 
 import data.Attri;
+import data.LineFollower;
+import data.UltrasonicSensor;
 
 //THIS IS FOR REGULAR DATAEXCHANGE + SETTING NEW VALUES FROM DATABASE TO THE ROBOT
 
@@ -39,7 +41,6 @@ public class DataExchange
 	//colorSensor
     public static EV3ColorSensor colorSensor;
     public static final float[] colorSample = new float[1]; 
-
     //ultrasonic sensor 
     public EV3UltrasonicSensor sonicSensor; 
     
@@ -82,12 +83,13 @@ public class DataExchange
 		return CMD;
 	}
 	
+	
 	 public int getSpeed() {
 	        return speed;
 	    }
 
 	    public void setSpeed(int speed) {
-	        this.speed = speed;
+	        this.speed = LineFollower.SPEED;
 	    }
 
 	    public int getTurnangle() {
@@ -95,7 +97,7 @@ public class DataExchange
 	    }
 
 	    public void setTurnangle(int turnangle) {
-	        this.turnangle = turnangle;
+	        this.turnangle = LineFollower.TURN_ANGLE;
 	    }
 
 	    public int getMaxobs() {
@@ -103,7 +105,7 @@ public class DataExchange
 	    }
 
 	    public void setMaxobs(int maxobs) {
-	        this.maxobs = maxobs;
+	        this.maxobs = LineFollower.MAX_OBSTACLES;
 	    }
 
 	    public float getSecuritydis() {
@@ -111,7 +113,7 @@ public class DataExchange
 	    }
 
 	    public void setSecuritydis(float securitydis) {
-	        this.securitydis = securitydis;
+	        this.securitydis = UltrasonicSensor.securityDistance;
 	    }
     
 }

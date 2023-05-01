@@ -30,10 +30,13 @@ import data.Attri;
 import data.DataExchange;
 
 @Path ("/project")
-public class ev3_service<Walle> {
+public class Walle extends Thread{
+	
+	public Walle() {};
+	
 	@Context
 	HttpServletRequest request; 
-	@Context 
+	@Context
 	HttpServletResponse response;
 
 	
@@ -48,14 +51,7 @@ public class ev3_service<Walle> {
 	{
 		Attri a = new Attri(speed, turnangle, maxobs, securitydis);
 		Connection conn=null; //we initialize the value
-		/*try{
-			conn=Connections.getConnection();
-		}
-		catch(Exception e) {
-			d =new DataExchange(0,0, 0, 0); //if connection didnt work, it adds empty values to the database 
-			System.out.println("DataExchange not added");//For debugging if connection fails
-			return d;
-		}*/
+		
 		//Using normal Prepared statement to add the values into the database
 		try {
 			conn=Connections.getConnection();
@@ -106,7 +102,6 @@ public class ev3_service<Walle> {
 			e.printStackTrace();
 		}
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/readev3.jsp");
-		//request dispatcher object 
 		//we need to create a new .jsp file within the webapp
 		
 		request.setAttribute("dataexchange", list);
@@ -115,7 +110,6 @@ public class ev3_service<Walle> {
 		try {
 			rd.forward(request, response);
 		} catch (ServletException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 	}

@@ -12,7 +12,7 @@
 <ul>
 
 <c:forEach var="dataexchange" items="${requestScope.dataexchange}"><!-- request.setAttribute("dogs", getDogList()); in public void readAll() -->
-	<li>${dataexchange.speed}: ${dataexchange.turnangle} / ${dataexchange.maxobs} / ${dataexchange.securitydis}
+	<li>${dataexchange.speed} / ${dataexchange.turnangle} / ${dataexchange.maxobs} / ${dataexchange.securitydis}
 </c:forEach>
 
 </ul>
