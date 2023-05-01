@@ -9,13 +9,13 @@ follow video 14 with the following alterations:
         
 	create user team3@localhost identified by 'team3';
         
-	grant all on project.* to team3@localhost;
+	grant all on projectdb.* to team3@localhost;
 	
 - then exit root user and go to team3 
          
 	 use projectdb;
 
-         create table walle(id int auto_increment primary key not null, speed int not null, turnangle int not null, maxobs int not null, securitydis float (2,2) not null)engine=InnoDB;
+         create table walle(id int auto_increment primary key not null, speed int not null, turnangle int not null, maxobs int not null, securitydis float (3,1) not null)engine=InnoDB;
 	 
 	 desc walle (just to see if all the changes are done) 
 	 
@@ -23,7 +23,7 @@ follow video 14 with the following alterations:
 
 	 
 
-in video 15 just change the appengine-web.html file as: 
+in video 15 just change the appengine-web.xml file as: 
 -     <property name="localusername" value="team3"/>
 	    <property name="localpassword" value="team3"/>
       (so just change the localuser and localpassword)

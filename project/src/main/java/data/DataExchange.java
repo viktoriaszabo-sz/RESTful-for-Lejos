@@ -3,6 +3,7 @@ package data;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 
+//THIS IS FOR REGULAR DATAEXCHANGE + SETTING NEW VALUES FROM DATABASE TO THE ROBOT
 
 public class DataExchange 
 {
@@ -10,8 +11,8 @@ public class DataExchange
     //public static final float BLACK_THRESHOLD = 0.1f;
 
     //colorSensor
-    public static EV3ColorSensor colorSensor;
-    public static final float[] colorSample = new float[1];
+/*    public static EV3ColorSensor colorSensor;
+    public static final float[] colorSample = new float[1]; */
 
     
     //obstacledetector
@@ -19,61 +20,18 @@ public class DataExchange
     //public static double distance = 0.11;
     
     //ultrasonic sensor 
-    public EV3UltrasonicSensor sonicSensor;
+/*    public EV3UltrasonicSensor sonicSensor; */
     
     
-    private int speed = LineFollower.speed;
+    /*private int speed = LineFollower.speed;
     private int turnangle = LineFollower.turn_angle;
     private int maxobs = LineFollower.max_obstacles;
-    private float securitydis = UltrasonicSensor.securityDistance;
+    private float securitydis = UltrasonicSensor.securityDistance;*/
     
-    public int getSpeed()
-    {
-    	return speed;
-    }
-    public void setSpeed(int speed) 
-    {
-        this.speed = speed;
-    }
-
-    public int getTurnangle()
-    {
-    	return turnangle;
-    }
-    public void setTurnangle(int turnangle)
-    {
-    	this.turnangle = turnangle;
-    }
     
-    public int getMaxobstacle()
-    {
-    	return maxobs;
-    }
-    public void setMaxobstacle(int maxobs)
-    {
-    	this.maxobs = maxobs;
-    }
-    public float getSecuritydistance()
-    {
-    	return securitydis;
-    }
-    public void setSecuritydistance(float securitydis)
-    {
-    	this.securitydis = securitydis;
-    }
-
-
-
     public DataExchange() {} //constructor
-    public DataExchange(int speed, int turnangle, int maxobs, float securitydis)
-    {
-    	this.speed = speed;
-    	this.turnangle = turnangle;
-    	this.maxobs = maxobs;
-    	this.securitydis = securitydis;
-    }
-
-    public static void setColorSample(float[] sample)
+    
+/*    public static void setColorSample(float[] sample)
     {
     	colorSample[0] = sample[0];
     }
@@ -89,5 +47,5 @@ public class DataExchange
 	public static int getCMD() {
 		return CMD;
 	}
-    
+    */
 }

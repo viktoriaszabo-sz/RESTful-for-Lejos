@@ -15,7 +15,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
-			<attribute name="module" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
@@ -30,12 +29,16 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.lejos.ev3.ldt.LEJOS_EV3_LIBRARY_CONTAINER/">
+	<classpathentry exported="true" kind="con" path="org.lejos.ev3.ldt.LEJOS_EV3_LIBRARY_CONTAINER/">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jdk1.7.0_80/leJOS EV3/lib/ev3/dbusjava-src.zip"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jdk1.7.0_80/leJOS EV3/lib/pc/ev3tools-src.zip"/>
+	<classpathentry kind="lib" path="C:/Program Files/leJOS EV3/lib/ev3/dbusjava-src.zip"/>
+	<classpathentry kind="lib" path="C:/Program Files/leJOS EV3/lib/pc/ev3tools-src.zip"/>
+	<classpathentry kind="lib" path="C:/Program Files/leJOS EV3/lib/pc/ev3tools.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/leJOS EV3/lib/ev3/dbusjava.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/leJOS EV3/lib/ev3/ev3classes.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/leJOS EV3/lib/ev3/ev3classes-src.zip"/>
 	<classpathentry kind="output" path="target/project-0.1.0-SNAPSHOT/WEB-INF/classes"/>
 </classpath>
