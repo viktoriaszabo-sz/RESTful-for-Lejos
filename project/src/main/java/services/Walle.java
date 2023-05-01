@@ -4,8 +4,9 @@ import java.io.IOException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -26,12 +27,16 @@ import javax.ws.rs.core.Context;
 import conn.Connections;
 
 import data.Attri;
+import data.DataExchange;
 
 @Path ("/project")
-public class ev3_service<Walle> {
+public class Walle extends Thread{
+	
+	public Walle() {};
+	
 	@Context
 	HttpServletRequest request; 
-	@Context 
+	@Context
 	HttpServletResponse response;
 
 	
@@ -46,14 +51,7 @@ public class ev3_service<Walle> {
 	{
 		Attri a = new Attri(speed, turnangle, maxobs, securitydis);
 		Connection conn=null; //we initialize the value
-		/*try{
-			conn=Connections.getConnection();
-		}
-		catch(Exception e) {
-			d =new DataExchange(0,0, 0, 0); //if connection didnt work, it adds empty values to the database 
-			System.out.println("DataExchange not added");//For debugging if connection fails
-			return d;
-		}*/
+		
 		//Using normal Prepared statement to add the values into the database
 		try {
 			conn=Connections.getConnection();
@@ -63,17 +61,6 @@ public class ev3_service<Walle> {
 			pstmt.setInt(3, maxobs);
 			pstmt.setFloat(4, securitydis);
 			pstmt.executeUpdate();
-			
-			//Using common statement while reading, because there are no variables in the sql statement
-/*			Statement stmt=conn.createStatement();
-			ResultSet RS=stmt.executeQuery("select * from dog");
-			while (RS.next()) {
-				Dog dog=new Dog();
-				dog.setId(RS.getInt("id"));
-				dog.setBreed(RS.getString("breed"));
-				dog.setWeight(RS.getFloat("weight"));
-				list.add(dog);
-			}*/ //this part reads stuff from the database
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -92,19 +79,38 @@ public class ev3_service<Walle> {
 		return a;
 	}
 	
-	/*public ArrayList<DataExchange> getDataExchangeList(int speed, int turnangle, int maxobs, float securitydis)
-	{ //could be database handling even
-		ArrayList<DataExchange> list = new ArrayList<>();
-		list.add(new DataExchange(speed, turnangle, maxobs, securitydis));
-		return list;
-	}*/
-	/*@GET
-	@Path("/test")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String info () {
+	@GET
+	@Path("/read_ev")
+	public void readEV3() 
+    {
+		ArrayList<DataExchange> list=new ArrayList<>();
+		Connection conn=null;
+		try{
+			conn=Connections.getConnection();
 		
-		String info = "<h1> This is a project service! </h1>";
-		request.setAttribute("dataexchange", info);
-	    return "/jsp/printev3.jsp";
-	}*/
+			Statement stmt=conn.createStatement();
+			ResultSet RS=stmt.executeQuery("select * from walle");
+			while (RS.next()) {
+				DataExchange d = new DataExchange();
+				d.setSpeed(RS.getInt("speed"));
+				d.setTurnangle(RS.getInt("turnangle"));
+				d.setMaxobs(RS.getInt("maxobs"));
+				d.setSecuritydis(RS.getFloat("securitydis"));
+				list.add(d);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/readev3.jsp");
+		//we need to create a new .jsp file within the webapp
+		
+		request.setAttribute("dataexchange", list);
+		//"dogs" will be the "${requestscope.dogs}" in the jsp file 
+		
+		try {
+			rd.forward(request, response);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		} 
+	}
 }

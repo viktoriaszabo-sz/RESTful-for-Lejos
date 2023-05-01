@@ -13,7 +13,7 @@ public class Attri
     private float securitydis = 0;
     
     
-    public int getSpeed()
+    public  int getSpeed()
     {
     	return speed;
     }
@@ -21,7 +21,7 @@ public class Attri
         this.speed = speed;
     }
 
-    public int getTurnangle()
+    public  int getTurnangle()
     {
     	return turnangle;
     }
@@ -30,7 +30,7 @@ public class Attri
     	this.turnangle = turnangle;
     }
     
-    public int getMaxobs()
+    public  int getMaxobs()
     {
     	return maxobs;
     }
@@ -38,7 +38,7 @@ public class Attri
     {
     	this.maxobs = maxobs;
     }
-    public float getSecuritydis()
+    public  float getSecuritydis()
     {
     	return securitydis;
     }
