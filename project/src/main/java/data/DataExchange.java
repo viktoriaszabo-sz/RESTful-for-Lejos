@@ -48,87 +48,12 @@ public class DataExchange
     private int maxobs; 
     private float securitydis;
     
-    
-    public int getSpeed()
-    {
-    	return Attri.getSpeed();
-    }
-    public void setSpeed(int speed) {
-        LineFollower.SPEED = speed;
-    }
-    
-    public int getTurnangle()
-    {
-    	return Attri.getTurnangle();
-    }
-    public void setTurnangle(int turnangle)
-    {
-    	LineFollower.TURN_ANGLE = turnangle;
-    }
-    
-    public int getMaxobs()
-    {
-    	return Attri.getMaxobs();
-    }
-    public void setMaxobs(int maxobs)
-    {
-    	LineFollower.MAX_OBSTACLES = maxobs;
-    }
-    
-    public float getSecuritydis()
-    {
-    	return Attri.getSecuritydis();
-    }
-    public void setSecuritydis(float securitydis)
-    {
-    	UltrasonicSensor.securityDistance = securitydis;
-    }
-    
-    
-    
     @Context
 	HttpServletRequest request; 
 	@Context 
 	HttpServletResponse response;
 	
-
-	
-    @GET
-	@Path("/read_ev")
-	public void readEV3() 
-    {
-		ArrayList<DataExchange> list=new ArrayList<>();
-		Connection conn=null;
-		try{
-			conn=Connections.getConnection();
-		
-			Statement stmt=conn.createStatement();
-			ResultSet RS=stmt.executeQuery("select * from walle");
-			while (RS.next()) {
-				DataExchange d = new DataExchange();
-				d.setSpeed(RS.getInt("speed"));
-				d.setTurnangle(RS.getInt("turnangle"));
-				d.setMaxobs(RS.getInt("maxobs"));
-				d.setSecuritydis(RS.getFloat("securitydis"));
-				list.add(d);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/readev3.jsp");
-		//request dispatcher object 
-		//we need to create a new .jsp file within the webapp
-		
-		request.setAttribute("dataexchange", list);
-		//"dogs" will be the "${requestscope.dogs}" in the jsp file 
-		
-		try {
-			rd.forward(request, response);
-		} catch (ServletException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-	}
+    
     
     public DataExchange(int speed, int turnangle, int maxobs, float securitydis)
     {
@@ -156,5 +81,37 @@ public class DataExchange
 	public static int getCMD() {
 		return CMD;
 	}
+	
+	 public int getSpeed() {
+	        return speed;
+	    }
+
+	    public void setSpeed(int speed) {
+	        this.speed = speed;
+	    }
+
+	    public int getTurnangle() {
+	        return turnangle;
+	    }
+
+	    public void setTurnangle(int turnangle) {
+	        this.turnangle = turnangle;
+	    }
+
+	    public int getMaxobs() {
+	        return maxobs;
+	    }
+
+	    public void setMaxobs(int maxobs) {
+	        this.maxobs = maxobs;
+	    }
+
+	    public float getSecuritydis() {
+	        return securitydis;
+	    }
+
+	    public void setSecuritydis(float securitydis) {
+	        this.securitydis = securitydis;
+	    }
     
 }
