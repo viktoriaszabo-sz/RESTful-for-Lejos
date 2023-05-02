@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +8,16 @@
 <title>Print EV3 attributes</title>
 </head>
 <body>
-<h1>EV3</h1>
-<ul>
+	<h1>EV3</h1>
+	<ul>
 
-<c:forEach var="attri" items="${requestScope.attri}">
-	<li>${attri.speed}: ${attri.turnangle} / ${attri.maxobs} / ${attri.securitydis}
-</c:forEach> 		<!-- this will help us see the attributes posted into the database (json string pretty much) -->
+		<c:forEach var="attri" items="${requestScope.attri}">
+			<li>${attri.speed}:${attri.turnangle} / ${attri.maxobs} /
+				${attri.securitydis}
+		</c:forEach>
+		<!-- this will help us see the attributes posted into the database (json string pretty much) -->
 
-</ul>
-<h1> this is a test</h1>
+	</ul>
+	<h1>this is a test</h1>
 </body>
 </html>
