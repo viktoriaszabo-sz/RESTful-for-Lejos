@@ -27,10 +27,9 @@ import javax.ws.rs.core.Context;
 import conn.Connections;
 
 import data.Attri;
-import data.DataExchange;
 
 @Path ("/project")
-public class Walle extends Thread{
+public class Walle{
 	
 	public Walle() {}; //this is our main service class, this is where we put data into the database		
 						//and then read those from the database 
@@ -83,9 +82,9 @@ public class Walle extends Thread{
 	
 	@GET
 	@Path("/read_ev")			//this is for reading the input values FROM the database
-	public void run() 			//this will be the main method of this thread
+	public void ReadEvByPost() 			//this will be the main method of this thread
     {							//the robot will read this attributes and act accordingly
-		ArrayList<DataExchange> list=new ArrayList<>();
+		ArrayList<Attri> list=new ArrayList<>();
 		Connection conn=null;
 		try{
 			conn=Connections.getConnection(); 	//connection to db / mysql
@@ -93,7 +92,7 @@ public class Walle extends Thread{
 			Statement stmt=conn.createStatement();
 			ResultSet RS=stmt.executeQuery("select * from walle");
 			while (RS.next()) {
-				DataExchange d = new DataExchange(); //creating a new object from DataExchange, since
+				Attri d = new Attri(); 				//creating a new object from DataExchange, since
 				d.setSpeed(RS.getInt("speed"));		 // the robot will only work with the stuff put in that class
 				d.setTurnangle(RS.getInt("turnangle"));	//just like with the previous project 
 				d.setMaxobs(RS.getInt("maxobs"));		//these setters are in the DataExchange class as well
@@ -106,8 +105,8 @@ public class Walle extends Thread{
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/readev3.jsp");
 		//we need to create a new .jsp file within the webapp - or just to print it out on the screen
 		
-		request.setAttribute("dataexchange", list);
-		//"dataexchange" will be the "${requestscope.dataexchange}" in the jsp file 
+		request.setAttribute("attri", list);
+		//"attri" will be the "${requestscope.dataexchange}" in the jsp file 
 		
 		try {
 			rd.forward(request, response);

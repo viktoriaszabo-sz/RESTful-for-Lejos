@@ -1,5 +1,3 @@
-package data;
-
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.Button;
 import lejos.hardware.port.SensorPort;
