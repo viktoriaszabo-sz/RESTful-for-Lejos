@@ -73,7 +73,8 @@ public class Connect extends Thread {
 	                if (isr != null) {
 	                    isr.close();
 	                }
-	            } catch (Exception e) {
+	            }
+	            catch (Exception e) {
 	                e.printStackTrace();
 	            }
 		 }
