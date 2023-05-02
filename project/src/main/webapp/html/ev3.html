@@ -4,18 +4,14 @@
 <meta charset="UTF-8">
 <title>Team 3 EV3</title>
 </head>
-<body>
+<body>    <!-- This is our form that sends the new values to our service, then db, then robot -->
 
 <style>
-
 body {
-
     background-color: #3E4172;
-
 }
 
 h1   {
-
     display: inline-block;
     color: #9B7495;
     border: 5px dashed #9B7495;
@@ -23,28 +19,25 @@ h1   {
 }
 
 p    {
-
     color: #CFBFB8;
     font-size: 20px;
-
 }
 
 p1    {
-
     color: #CFBFB8;
-
 }
 
 input[type="submit"] {
-            border-radius: 10px; /* set the border-radius property to 20px */
-            padding: 5px; /* add some padding to the button */
+            border-radius: 10px; 
+            padding: 5px; 
         }
-
 </style>
+
 <h1> Team 3 Web Services Project </h1>
 <p> If you wish to put commands into our robot's code, choose one of the followings:  </p>
 
 <form action = '/rest/project/add_ev' method = 'post'> <!-- this is the method that sends the input into the database  -->
+														<!-- see: Walle.java -->
 
     <p1><b>Speed:</b></p1> <input type = 'text' name = 'speed' value = '' placeholder='Default 300'><br><br>
     <p1><b>Turn angle:</b></p1> <input type = 'text' name = 'turnangle' value = '' placeholder='Default 220'><br><br>
