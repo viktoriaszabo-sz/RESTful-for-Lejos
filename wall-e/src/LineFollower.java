@@ -1,5 +1,3 @@
-package data;
-
 import java.io.File;
 
 import lejos.hardware.Button;
@@ -8,12 +6,18 @@ import lejos.hardware.motor.Motor;
 import lejos.robotics.Color;
 import lejos.utility.Delay;
 
+
+//testing codeowner file permissions
+
+//testing codeowner
+
+
 public class LineFollower extends Thread {
-    public static int SPEED = 300;
+    public static final int SPEED = 300;
     public static final float BLACK_THRESHOLD = 0.1f;
     public static int TURN_ANGLE = 220;
     DataExchange DE; 
-    public static int MAX_OBSTACLES = 0;
+    public static int MAX_OBSTACLES = 0; 
     
 
     public LineFollower(DataExchange DE) { 

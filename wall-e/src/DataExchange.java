@@ -1,5 +1,3 @@
-package data;
-
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 
@@ -12,28 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces; 
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Context;
-
-import conn.Connections;
-
-import data.Attri;
-import data.LineFollower;
-import data.UltrasonicSensor;
-
 //THIS IS FOR REGULAR DATAEXCHANGE + SETTING NEW VALUES FROM DATABASE TO THE ROBOT
+//this reads stuff from the servlet "read_ev" method
 
 public class DataExchange 
 {
@@ -48,13 +26,11 @@ public class DataExchange
     private int maxobs; 		//these are the attributes from the Attri class - we initialize them here as well 
     private float securitydis;	//then later in the setters we set their values to our original robot values
     
-    @Context
+    /*@Context
 	HttpServletRequest request; 
 	@Context 
-	HttpServletResponse response;
+	HttpServletResponse response;*/
 	
-    
-    
     public DataExchange(int speed, int turnangle, int maxobs, float securitydis)
     {
     	this.speed = speed;
@@ -114,5 +90,4 @@ public class DataExchange
 	    public void setSecuritydis(float securitydis) {
 	        this.securitydis = UltrasonicSensor.securityDistance;
 	    }
-    
 }
