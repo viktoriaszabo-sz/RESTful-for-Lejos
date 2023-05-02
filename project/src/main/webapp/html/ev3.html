@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <title>Team 3 EV3</title>
 </head>
-<body>
+<body>				<!-- this is our form that sends the new values to our service, then db, then robot -->
 
 <p> This is Team 3's Web Services project. </p>
 <p> If you wish to put commands into our robot's code, choose one of the followings:  </p>
 
 <form action = '/rest/project/add_ev' method = 'post'> <!-- this is the method that sends the input into the database  -->
-
+														<!-- see: Walle.java -->
 	Speed: <input type = 'text' name = 'speed' value = ''><br>
 	Turn angle: <input type = 'text' name = 'turnangle' value = ''><br>
 	Max obstacle count: <input type = 'text' name = 'maxobs' value = ''><br>
@@ -20,14 +20,5 @@
 	
 </form>
 
-	<!-- 
-	<ul>
-		<li>1. Set speed: "http://localhost:8080/rest/walle/speed/p1" (put a number on the place of p1)</li>
-		<li>1. Set the turn-angle: "http://localhost:8080/rest/walle/set_angle/p1" (put a number on the place of p1)</li>
-		<li>1. Set set_max_ob: "http://localhost:8080/rest/walle/set_max_ob/p1" (put a number on the place of p1)</li>
-		<li>1. Set set_dis: "http://localhost:8080/rest/walle/set_dis/p1" (put a number on the place of p1)</li>
-	</ul>
-	-->
-	
 </body>
 </html>

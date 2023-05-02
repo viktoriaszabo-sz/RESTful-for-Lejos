@@ -11,9 +11,9 @@
 <h1>EV3</h1>
 <ul>
 
-<c:forEach var="attri" items="${requestScope.attri}"><!-- request.setAttribute("dogs", getDogList()); in public void readAll() -->
+<c:forEach var="attri" items="${requestScope.attri}">
 	<li>${attri.speed}: ${attri.turnangle} / ${attri.maxobs} / ${attri.securitydis}
-</c:forEach>
+</c:forEach> 		<!-- this will help us see the attributes posted into the database (json string pretty much) -->
 
 </ul>
 <h1> this is a test</h1>

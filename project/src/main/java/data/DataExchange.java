@@ -35,7 +35,6 @@ import data.UltrasonicSensor;
 
 //THIS IS FOR REGULAR DATAEXCHANGE + SETTING NEW VALUES FROM DATABASE TO THE ROBOT
 
-@Path ("/project")
 public class DataExchange 
 {
 	//colorSensor
@@ -46,8 +45,8 @@ public class DataExchange
     
     private int speed; 
     private int turnangle; 
-    private int maxobs; 
-    private float securitydis;
+    private int maxobs; 		//these are the attributes from the Attri class - we initialize them here as well 
+    private float securitydis;	//then later in the setters we set their values to our original robot values
     
     @Context
 	HttpServletRequest request; 
@@ -59,8 +58,8 @@ public class DataExchange
     public DataExchange(int speed, int turnangle, int maxobs, float securitydis)
     {
     	this.speed = speed;
-    	this.turnangle = turnangle;											//parameterized constructor for ev3_service
-    	this.maxobs = maxobs;
+    	this.turnangle = turnangle;					//parameterized constructor for ev3_service
+    	this.maxobs = maxobs;						//we will use this in the read_ev method
     	this.securitydis = securitydis;
     }
     
@@ -84,12 +83,12 @@ public class DataExchange
 	}
 	
 	
-	 public int getSpeed() {
-	        return speed;
-	    }
+	 public int getSpeed() {  				//these are the data we got from the database in
+	        return speed;					// the Walle class
+	    }				
 
 	    public void setSpeed(int speed) {
-	        this.speed = LineFollower.SPEED;
+	        this.speed = LineFollower.SPEED;	//we set the Attri values to our original robot values
 	    }
 
 	    public int getTurnangle() {

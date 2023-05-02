@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Print EV3 attributes</title>
+<title>Read EV3 attributes</title>
 </head>
 <body>
 <h1>EV3</h1>
@@ -14,7 +14,7 @@
 <c:forEach var="dataexchange" items="${requestScope.dataexchange}"><!-- request.setAttribute("dogs", getDogList()); in public void readAll() -->
 	<li>${dataexchange.speed} / ${dataexchange.turnangle} / ${dataexchange.maxobs} / ${dataexchange.securitydis}
 </c:forEach>
-
+				<!-- this will help us see the attributes retrieved from the database (json string pretty much -->
 </ul>
 <h1> this is a test</h1>
 </body>

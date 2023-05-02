@@ -17,7 +17,7 @@ import data.Attri;
 import lejos.hardware.Button;
 //import runnables;
 
-public class html_connection {
+public class html_connection {					//ask teacher
 
 	public static void main(String[] args) {
 		
