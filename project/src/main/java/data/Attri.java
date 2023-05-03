@@ -13,8 +13,7 @@ public class Attri
     private int speed = 0;
     private int turnangle = 0;
     private int maxobs = 0;
-    private float securitydis = 0;
-    
+     
     //regular setters and getters:
     
     public  int getSpeed()
@@ -42,23 +41,13 @@ public class Attri
     {
     	this.maxobs = maxobs;
     }
-    public  float getSecuritydis()
-    {
-    	return securitydis;
-    }
-    public void setSecuritydis(float securitydis)
-    {
-    	this.securitydis = securitydis;
-    }
-
-
+    
+    
     public Attri() {} //constructor
-    public Attri(int speed, int turnangle, int maxobs, float securitydis)
+    public Attri(int speed, int turnangle, int maxobs)
     {
     	this.speed = speed;
     	this.turnangle = turnangle;				//parameterized constructor for ev3_service
-    	this.maxobs = maxobs;					//we will use this in the add_ev method
-    	this.securitydis = securitydis;
+    	this.maxobs = maxobs;
     }
-
 }

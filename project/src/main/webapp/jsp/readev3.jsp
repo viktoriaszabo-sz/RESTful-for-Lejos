@@ -12,7 +12,7 @@
 <ul>
 
 <c:forEach var="attri" items="${requestScope.attri}"><!-- request.setAttribute("dogs", getDogList()); in public void readAll() -->
-	<li>${attri.speed} / ${attri.turnangle} / ${attri.maxobs} / ${attri.securitydis}
+	<li>${attri.speed} / ${attri.turnangle} / ${attri.maxobs} 
 </c:forEach>
 				<!-- this will help us see the attributes retrieved from the database (json string pretty much -->
 </ul>
