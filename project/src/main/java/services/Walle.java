@@ -20,6 +20,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces; 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Context;
@@ -45,10 +46,9 @@ public class Walle{
 	@Produces(MediaType.APPLICATION_JSON)
 	public Attri addEvByPost (@DefaultValue("300") @FormParam("speed") int speed, 
 									 @DefaultValue("220") @FormParam("turnangle") int turnangle, 
-									 @DefaultValue("2") @FormParam("maxobs") int maxobs, 
-									 @DefaultValue("9") @FormParam("securitydis") float securitydis)
+									 @DefaultValue("2") @FormParam("maxobs") int maxobs)
 	{
-		Attri a = new Attri(speed, turnangle, maxobs, securitydis);
+		Attri a = new Attri(speed, turnangle, maxobs);
 		//we need to create a new object from the Attri class 
 		//Attri class holds all the values that are needed for the services 
 				
@@ -60,12 +60,11 @@ public class Walle{
 			pstmt.setInt(1, speed);
 			pstmt.setInt(2, turnangle);		//we set the inserted values into place 
 			pstmt.setInt(3, maxobs);		//check in db: "select * from walle;"
-			pstmt.setFloat(4, securitydis);
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();			//this is for exception handling
-			a = new Attri(0, 0, 0, 0);
+			a = new Attri(0, 0, 0);
 		}
 		finally { //its needed whether or not the try-catch block produces something, 
 					//so that the code still finishes
@@ -96,7 +95,6 @@ public class Walle{
 				d.setSpeed(RS.getInt("speed"));		 // the robot will only work with the stuff put in that class
 				d.setTurnangle(RS.getInt("turnangle"));	//just like with the previous project 
 				d.setMaxobs(RS.getInt("maxobs"));		//these setters are in the DataExchange class as well
-				d.setSecuritydis(RS.getFloat("securitydis"));
 				list.add(d);
 			}
 		} catch (SQLException e) {		//exception-handling
@@ -114,4 +112,87 @@ public class Walle{
 			e.printStackTrace();
 		} 
 	}
+	@GET
+	@Path ("/read_only_one_ev/{id}") 
+	public void ReadOnlyOneEv(@PathParam("id") int id)
+	{
+		ArrayList<Attri> list=new ArrayList<>();
+		Connection conn=null;
+		//Attri d = new Attri();
+		try{
+			conn=Connections.getConnection(); 	//connection to db / mysql
+		
+			PreparedStatement pstmt=conn.prepareStatement("select * from walle where id=?");
+			pstmt.setInt(1,  id);
+			ResultSet RS=pstmt.executeQuery();
+			if (RS.next()) {
+				Attri d = new Attri(); 				//creating a new object from DataExchange, since
+				d.setSpeed(RS.getInt("speed"));		 // the robot will only work with the stuff put in that class
+				d.setTurnangle(RS.getInt("turnangle"));	//just like with the previous project 
+				d.setMaxobs(RS.getInt("maxobs"));		//these setters are in the DataExchange class as well
+				list.add(d);
+			}
+		} catch (SQLException e) {		//exception-handling
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (conn!=null) {
+					conn.close();}
+			}catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/read_only_one_ev.jsp");
+		//we need to create a new .jsp file within the webapp - or just to print it out on the screen
+		
+		request.setAttribute("attri", list);
+		//"attri" will be the "${requestscope.dataexchange}" in the jsp file 
+		
+		try {
+			rd.forward(request, response);
+		} catch (ServletException | IOException e) { //exception-handling
+			e.printStackTrace();
+		} 
+	}
+	@GET
+	@Path ("/read_by_lego/{id}") 
+	public String ReadByOneEv(@PathParam("id") int id)
+	{
+		ArrayList<Attri> list=new ArrayList<>();
+		Connection conn=null;
+		//Attri d = new Attri();
+		try{
+			conn=Connections.getConnection(); 	//connection to db / mysql
+		
+			PreparedStatement pstmt=conn.prepareStatement("select * from walle where id=?");
+			pstmt.setInt(1,  id);
+			ResultSet RS=pstmt.executeQuery();
+			if (RS.next()) {
+				Attri d = new Attri(); 				//creating a new object from DataExchange, since
+				d.setSpeed(RS.getInt("speed"));		 // the robot will only work with the stuff put in that class
+				d.setTurnangle(RS.getInt("turnangle"));	//just like with the previous project 
+				d.setMaxobs(RS.getInt("maxobs"));		//these setters are in the DataExchange class as well
+				list.add(d);
+			}
+		} catch (SQLException e) {		//exception-handling
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (conn!=null) {
+					conn.close();}
+			}catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		Attri at=list.get(0);
+		return at.getSpeed()+" "+at.getTurnangle()+" "+at.getMaxobs();
+		//maybe it should be set 
+	}
+	
+	
 }

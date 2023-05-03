@@ -8,7 +8,21 @@
 <title>Print EV3 attributes</title>
 </head>
 <body>
-<h1>EV3</h1>
+<h1>Print only one EV3 according to id</h1>
+
+<!-- <form action = '/rest/project/read_only_one_dog/{id}" method = 'post'>
+
+	Speed: <input type = 'text' name = 'speed' value = ''><br>
+	Turn angle: <input type = 'text' name = 'turnangle' value = ''><br>
+	Max obstacle count: <input type = 'text' name = 'maxobs' value = ''><br>
+	Security distance: <input type = 'text' name = 'securitydis' value = ''><br>
+	
+	<input type = 'submit' name = 'ok' value = 'Send'><br>
+	
+
+</form>  -->
+
+
 <ul>
 
 <c:forEach var="attri" items="${requestScope.attri}">
