@@ -4,68 +4,52 @@
 <meta charset="UTF-8">
 <title>Team 3 EV3</title>
 </head>
-<body>
-	<!-- This is our form that sends the new values to our service, then db, then robot -->
+<body>    <!-- This is our form that sends the new values to our service, then db, then robot -->
 
-	<style>
+<style>
 body {
-	background-color: #3E4172;
+    background-color: #3E4172;
 }
 
-h1 {
-	display: inline-block;
-	color: #9B7495;
-	border: 5px dashed #9B7495;
-	padding: 10px;
+h1   {
+    display: inline-block;
+    color: #9B7495;
+    border: 5px dashed #9B7495;
+    padding: 10px;
 }
 
-p {
-	color: #CFBFB8;
-	font-size: 20px;
+p    {
+    color: #CFBFB8;
+    font-size: 20px;
 }
 
-p1 {
-	color: #CFBFB8;
+p1    {
+    color: #CFBFB8;
 }
 
 input[type="submit"] {
-	border-radius: 10px;
-	padding: 5px;
-}
+            border-radius: 10px; 
+            padding: 5px; 
+        }
 </style>
 
-	<h1>Team 3 Web Services Project</h1>
-	<p>If you wish to put commands into our robot's code, choose one of
-		the followings:</p>
+<h1> Team 3 Web Services Project </h1>
+<p> If you wish to put commands into our robot's code, choose one of the followings:  </p>
 
-	<form action='/rest/project/add_ev' method='post'>
-		<!-- this is the method that sends the input into the database  -->
-		<!-- see: Walle.java -->
+<form action = '/rest/project/add_ev' method = 'post'> <!-- this is the method that sends the input into the database  -->
+														<!-- see: Walle.java -->
 
-		<p1>
-		<b>Speed:</b></p1>
-		<input type='text' name='speed' value='' placeholder='Default 300'><br>
-		<br>
-		<p1>
-		<b>Turn angle:</b></p1>
-		<input type='text' name='turnangle' value='' placeholder='Default 220'><br>
-		<br>
-		<p1>
-		<b>Max obstacle count:</b></p1>
-		<input type='text' name='maxobs' value='' placeholder='Default 2'><br>
-		<br>
-		<p1>
-		<b>Security distance:</b></p1>
-		<input type='text' name='securitydis' value='' placeholder='Default 9'><br>
-		<br> <input type='submit' name='ok' value='Send'><br>
-		<br>
-
-	</form>
-	<!--  
+    <b>Speed:</b> <input type = 'text' name = 'speed' value = '' placeholder='Default 300'><br><br>
+    <b>Turn angle:</b> <input type = 'text' name = 'turnangle' value = '' placeholder='Default 220'><br><br>
+    <b>Max obstacle count:</b> <input type = 'text' name = 'maxobs' value = '' placeholder='Default 2'><br><br>
+    
+    <input type = 'submit' name = 'ok' value = 'Send'><br><br>
+    
+</form>
+<!--  
 <img src="images/walleandeve.jpg" alt="robot2" style="width: 750px; height: 450px;">
 -->
-	<img src="images/Pixar-Wall-E.jpg" alt="robot"
-		style="width: 750px; height: 450px;">
+<img src="images/Pixar-Wall-E.jpg" alt="robot" style="width: 750px; height: 450px;">
 
 </body>
 </html>
