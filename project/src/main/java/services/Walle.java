@@ -56,7 +56,7 @@ public class Walle{
 		
 		try { 	//Using normal Prepared statement to add the values into the database
 			conn=Connections.getConnection();
-			PreparedStatement pstmt=conn.prepareStatement("insert into walle(speed, turnangle, maxobs, securitydis) values(?,?,?,?)");
+			PreparedStatement pstmt=conn.prepareStatement("insert into walle(speed, turnangle, maxobs) values(?,?,?)");
 			pstmt.setInt(1, speed);
 			pstmt.setInt(2, turnangle);		//we set the inserted values into place 
 			pstmt.setInt(3, maxobs);		//check in db: "select * from walle;"
@@ -79,7 +79,7 @@ public class Walle{
 		return a;
 	}
 	
-	@GET
+	/*@GET
 	@Path("/read_ev")			//this is for reading the input values FROM the database
 	public void ReadEvByPost() 			//this will be the main method of this thread
     {							//the robot will read this attributes and act accordingly
@@ -111,8 +111,8 @@ public class Walle{
 		} catch (ServletException | IOException e) { //exception-handling
 			e.printStackTrace();
 		} 
-	}
-	@GET
+	}*/
+	/*@GET
 	@Path ("/read_only_one_ev/{id}") 
 	public void ReadOnlyOneEv(@PathParam("id") int id)
 	{
@@ -156,9 +156,9 @@ public class Walle{
 		} catch (ServletException | IOException e) { //exception-handling
 			e.printStackTrace();
 		} 
-	}
+	}*/
 	@GET
-	@Path ("/read_by_lego/{id}") 
+	@Path ("/read_by_lego/{id}")
 	public String ReadByOneEv(@PathParam("id") int id)
 	{
 		ArrayList<Attri> list=new ArrayList<>();
@@ -179,6 +179,7 @@ public class Walle{
 			}
 		} catch (SQLException e) {		//exception-handling
 			e.printStackTrace();
+			return "Error occurred while fetching data from the database.";
 		}
 		finally {
 			try {
@@ -189,6 +190,9 @@ public class Walle{
 				e.printStackTrace();
 			}
 		}
+		if (list.isEmpty()) {
+	        return "No data found for the given ID.";
+	    }
 		Attri at=list.get(0);
 		return at.getSpeed()+" "+at.getTurnangle()+" "+at.getMaxobs();
 		//maybe it should be set 
