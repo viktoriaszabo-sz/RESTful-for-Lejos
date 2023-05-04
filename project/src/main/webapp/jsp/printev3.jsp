@@ -13,7 +13,7 @@
 
 <c:forEach var="attri" items="${requestScope.attri}">
 	<li>${attri.speed}: ${attri.turnangle} / ${attri.maxobs} 
-	<a href='/rest/project/deletedata/${walle.id}'>Delete</a>
+	<a href='/rest/project/readforupdate/${walle.id}'>Update</a>
 </c:forEach> 		<!-- this will help us see the attributes posted into the database (json string pretty much) -->
 
 </ul>
