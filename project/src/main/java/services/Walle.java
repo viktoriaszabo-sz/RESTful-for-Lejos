@@ -158,8 +158,8 @@ public class Walle{
 		} 
 	}*/
 	@GET
-	@Path ("/read_by_lego/{id}")
-	public String ReadByOneEv(@PathParam("id") int id)
+	@Path ("/updatewalle/{id}")
+	public String ReadByOneEv(@PathParam("id") int id, @FormParam("speed") int speed, @FormParam("turnangle") int turnangle, @FormParam("maxobs") int maxobs)
 	{
 		ArrayList<Attri> list=new ArrayList<>();
 		Connection conn=null;
@@ -167,7 +167,7 @@ public class Walle{
 		try{
 			conn=Connections.getConnection(); 	//connection to db / mysql
 		
-			PreparedStatement pstmt=conn.prepareStatement("select * from walle where id=?");
+			PreparedStatement pstmt=conn.prepareStatement("update walle set speed=?, turnangle=?, maxobs=? where id=?");
 			pstmt.setInt(1,  id);
 			ResultSet RS=pstmt.executeQuery();
 			if (RS.next()) {
