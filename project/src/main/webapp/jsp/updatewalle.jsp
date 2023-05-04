@@ -12,6 +12,7 @@
 
  <form action = '/rest/project/updatewalle' method ='post' >
 
+	ID: <input type = 'text' name = 'id' value = '${requestScope.walle.id}'><br>
 	Speed: <input type = 'text' name = 'speed' value = '${requestScope.walle.speed}'><br>
 	Turn angle: <input type = 'text' name = 'turnangle' value = '${requestScope.walle.turnangle}'><br>
 	Max obstacle count: <input type = 'text' name = 'maxobs' value = '${requestScope.walle.maxobs}'><br>
