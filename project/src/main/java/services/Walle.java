@@ -198,5 +198,37 @@ public class Walle{
 		//maybe it should be set 
 	}
 	
+	@GET
+	@Path ("/deletedata/{id}")
+	public void deleteData(@PathParam("id") int id) {
+		Connection conn = null;
+		try {
+			conn = Connections.getConnection();
+		}
+		catch(Exception e) {	
+		}
+		//Using normal Prepared statement to add the values into the database
+		try {
+			
+			PreparedStatement pstmt=conn.prepareStatement("delete from walle where id=?");
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// Before the function ends, the connection should be closed
+		// This closing just returns the connection to the connection pool
+		finally {
+			try {
+				if (conn!=null) {
+					conn.close();}
+			}catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 	
 }
