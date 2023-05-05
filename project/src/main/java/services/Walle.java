@@ -43,7 +43,7 @@ public class Walle{
 	@POST					//this is for adding values to the database
 	@Path("/add_ev")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //html form 
-	@Produces(MediaType.APPLICATION_JSON)
+	//@Produces(MediaType.APPLICATION_JSON)
 	public Attri addEvByPost (@DefaultValue("300") @FormParam("speed") int speed, 
 									 @DefaultValue("220") @FormParam("turnangle") int turnangle, 
 									 @DefaultValue("2") @FormParam("maxobs") int maxobs)
@@ -76,6 +76,17 @@ public class Walle{
 				e.printStackTrace();
 			}
 		}
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/updatewalle.jsp");
+		//we need to create a new .jsp file within the webapp - or just to print it out on the screen
+		
+		request.setAttribute("attri", a);
+		//"attri" will be the "${requestscope.dataexchange}" in the jsp file 
+		
+		try {
+			rd.forward(request, response);
+		} catch (ServletException | IOException e) { //exception-handling
+			e.printStackTrace();
+		} 
 		return a;
 	}
 	
@@ -199,7 +210,7 @@ public class Walle{
 		//maybe it should be set 
 	}
 	
-	@POST					//this is for adding values to the database
+	/*@POST					//this is for adding values to the database
 	@Path("/add_ev")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //html form 
 	@Produces(MediaType.APPLICATION_JSON)
@@ -236,7 +247,7 @@ public class Walle{
 			}
 		}
 		return a;
-	}
+	}*/
 	
 	
 	
