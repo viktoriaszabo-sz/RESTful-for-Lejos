@@ -157,6 +157,7 @@ public class Walle{
 			e.printStackTrace();
 		} 
 	}*/
+	
 	@GET
 	@Path ("/read_by_lego/{id}")
 	public String ReadByOneEv(@PathParam("id") int id)
@@ -197,6 +198,46 @@ public class Walle{
 		return at.getSpeed()+" "+at.getTurnangle()+" "+at.getMaxobs();
 		//maybe it should be set 
 	}
+	
+	@POST					//this is for adding values to the database
+	@Path("/add_ev")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //html form 
+	@Produces(MediaType.APPLICATION_JSON)
+	public Attri updateEv (@DefaultValue("300") @FormParam("speed") int speed, 
+									 @DefaultValue("220") @FormParam("turnangle") int turnangle, 
+									 @DefaultValue("2") @FormParam("maxobs") int maxobs)
+	{
+		Attri a = new Attri(speed, turnangle, maxobs);
+		//we need to create a new object from the Attri class 
+		//Attri class holds all the values that are needed for the services 
+				
+		Connection conn=null; //we initialize the connection value		
+		
+		try { 	//Using normal Prepared statement to add the values into the database
+			conn=Connections.getConnection();
+			PreparedStatement pstmt=conn.prepareStatement("insert into walle(speed, turnangle, maxobs) values(?,?,?)");
+			pstmt.setInt(1, speed);
+			pstmt.setInt(2, turnangle);		//we set the inserted values into place 
+			pstmt.setInt(3, maxobs);		//check in db: "select * from walle;"
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();			//this is for exception handling
+			a = new Attri(0, 0, 0);
+		}
+		finally { //its needed whether or not the try-catch block produces something, 
+					//so that the code still finishes
+			try {
+				if (conn!=null)
+					conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return a;
+	}
+	
 	
 	
 }
