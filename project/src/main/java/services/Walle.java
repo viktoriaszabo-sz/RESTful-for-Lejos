@@ -141,7 +141,7 @@ public class Walle{
 	@Path("/updatewalle")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //html form 
 //	@Produces(MediaType.APPLICATION_JSON)
-	public void UpdateWalle(@FormParam ("id") int id,
+	public void UpdateWalle(
 			 @DefaultValue("300") @FormParam("speed") int speed, 
 			 @DefaultValue("220") @FormParam("turnangle") int turnangle, 
 			 @DefaultValue("2") @FormParam("maxobs") int maxobs)
@@ -154,11 +154,11 @@ public class Walle{
 		
 		try { 	//Using normal Prepared statement to add the values into the database
 			conn=Connections.getConnection();
-			PreparedStatement pstmt=conn.prepareStatement("update walle set speed=?, turnangle=?, maxobs=? where id=?");
+			PreparedStatement pstmt=conn.prepareStatement("update walle set speed=?, turnangle=?, maxobs=? ORDER BY id DESC LIMIT 1");
 			pstmt.setInt(1, speed);
 			pstmt.setInt(2, turnangle);		//we set the inserted values into place 
 			pstmt.setInt(3, maxobs);		//check in db: "select * from walle;"
-			pstmt.setInt(4, id);
+			//pstmt.setInt(4, id);
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {

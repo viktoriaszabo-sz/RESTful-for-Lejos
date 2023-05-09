@@ -71,7 +71,7 @@ input[type="submit"] {
         int id = RS.getInt("id");
 */%>
     <!-- ID: <input name="id" value="${id}" readonly="readonly"><br>  -->
-    ID: <input type="text" name="id"><br>
+    <!-- ID: <input type="text" name="id"><br> -->
 <% 
 /*
     }
