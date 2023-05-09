@@ -20,15 +20,12 @@ public class Connect extends Thread {
     
     public void run() {
         System.out.println("Read some text from URL\n");
-        //System.out.println("Press any key to start");
-
-        //Button.waitForAnyPress();
-
+        
         String s = null;
 
         while (!Button.ESCAPE.isDown()) {
             try {
-                URL url = new URL("http://192.168.0.108:8080/rest/project/read_by_lego/42");
+                URL url = new URL("http://192.168.0.111:8080/rest/project/read_by_lego");
 
                 HttpURLConnection conn = null;
                 InputStream is = null;
@@ -51,21 +48,10 @@ public class Connect extends Thread {
                     value2I = Integer.parseInt(value2S);
                     value3I = Integer.parseInt(value3S);
 
-                    /*System.out.println(value1I + " " + value2I + " " + value3I);
-
-                    	DE.setSpeed(value1I);
-                        DE.setTurnangle(value2I);
-                        DE.setMaxobs(value3I);
-                    
-                        System.out.println(DE.getSpeed() + " " + DE.getTurnangle() + " " + DE.getMaxobs());
-                    */
-                    //DataExchange DE = new DataExchange();
-                    
+                   
                     DE.setSpeed(value1I);
-                    DE.setTurnangle(value2I);		//this part is SHITE
+                    DE.setTurnangle(value2I);	
                     DE.setMaxobs(value3I);
-                    
-                    //System.out.println(DE.getSpeed() + " " + DE.getTurnangle() + " " + DE.getMaxobs());
                     
                     
                 } catch (IOException e) {
