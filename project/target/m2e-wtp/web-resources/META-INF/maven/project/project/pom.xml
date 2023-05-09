@@ -1,258 +1,261 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-      
-    <modelVersion>4.0.0</modelVersion>
-      
-    <packaging>war</packaging>
-      
-    <version>0.1.0-SNAPSHOT</version>
-      
-    <groupId>project</groupId>
-      
-    <artifactId>project</artifactId>
-      
-    <properties>
-            
-        <appengine.maven.plugin.version>2.4.4</appengine.maven.plugin.version>
-            
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-            
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-            
-        <maven.compiler.source>1.8</maven.compiler.source>
-            
-        <maven.compiler.target>1.8</maven.compiler.target>
-            
-        <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
-          
-    </properties>
-      
-    <dependencyManagement>
-            
-        <dependencies>
-                  
-            <dependency>
-                        
-                <groupId>com.google.cloud</groupId>
-                        
-                <artifactId>libraries-bom</artifactId>
-                        
-                <version>26.13.0</version>
-                        
-                <type>pom</type>
-                        
-                <scope>import</scope>
-                      
-            </dependency>
-                
-        </dependencies>
-          
-    </dependencyManagement>
-      
-    <dependencies>
-            
-        <!-- Compile/runtime dependencies -->
-            
-        <dependency>
-                  
-            <groupId>javax.servlet</groupId>
-                  
-            <artifactId>javax.servlet-api</artifactId>
-                  
-            <version>3.1.0</version>
-                  
-            <scope>provided</scope>
-                
-        </dependency>
-            
-        <dependency>
-                  
-            <groupId>javax.servlet.jsp</groupId>
-                  
-            <artifactId>javax.servlet.jsp-api</artifactId>
-                  
-            <version>2.3.1</version>
-                  
-            <scope>provided</scope>
-                
-        </dependency>
-            
-        <dependency>
-                  
-            <groupId>jstl</groupId>
-                  
-            <artifactId>jstl</artifactId>
-                  
-            <version>1.2</version>
-                
-        </dependency>
-            
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-1.0-sdk</artifactId>
-            <version>2.0.13</version>
-        </dependency>
-        
-        <!-- BEGIN: Added by Pena -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-<!-- This is needed in the Google Cloud side to be able to connect to a database -->
-	<dependency>
-	  <groupId>com.google.cloud.sql</groupId>
-	  <artifactId>mysql-socket-factory-connector-j-8</artifactId>
-	  <version>1.6.3</version>
-	</dependency>
-	    
-	<!-- This is for pooling the database connections - differs pretty much from e.g. Tomcat's way'-->    
-	<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
-	<dependency>
-	    <groupId>com.zaxxer</groupId>
-	    <artifactId>HikariCP</artifactId>
-	    <version>4.0.3</version>
-	</dependency>
-	
-	<!-- For connecting to MySQL database -->
-	<dependency>
-	   <groupId>mysql</groupId>
-	   <artifactId>mysql-connector-java</artifactId>
-	   <version>8.0.29</version>
-	 </dependency>
-	 
-<!-- This dependency is needed for annotations (e.g. @Path, @Consumes, @Produces etc.) in the REST-class-->
-	<dependency>
-	    <groupId>org.glassfish.jersey.media</groupId>
-	    <artifactId>jersey-media-json-jackson</artifactId>
-	    <version>2.27</version>
-	</dependency>
+	<modelVersion>4.0.0</modelVersion>
 
-<!-- This is needed that your server can handle REST-class as a servlet.
-		e.g. the class org.glassfish.jersey.servlet.ServletContainer 
-		in the project's web.xml file can be found from this library --> 
-	<dependency>
-		<groupId>org.glassfish.jersey.containers</groupId>
-		<artifactId>jersey-container-servlet</artifactId>
-		<version>2.27</version>
-	</dependency>
+	<packaging>war</packaging>
 
-<!-- This is needed because of injections  - server can inject our extra classes into resource -->	
-	<dependency>
-		<groupId>org.glassfish.jersey.inject</groupId>
-		<artifactId>jersey-hk2</artifactId>
-		<version>2.27</version>
-	</dependency>
+	<version>0.1.0-SNAPSHOT</version>
+
+	<groupId>project</groupId>
+
+	<artifactId>project</artifactId>
+
+	<properties>
+
+		<appengine.maven.plugin.version>2.4.4</appengine.maven.plugin.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<maven.compiler.source>1.8</maven.compiler.source>
+
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+
+	</properties>
+
+	<dependencyManagement>
+
+		<dependencies>
+
+			<dependency>
+
+				<groupId>com.google.cloud</groupId>
+
+				<artifactId>libraries-bom</artifactId>
+
+				<version>26.13.0</version>
+
+				<type>pom</type>
+
+				<scope>import</scope>
+
+			</dependency>
+
+		</dependencies>
+
+	</dependencyManagement>
+
+	<dependencies>
+
+		<!-- Compile/runtime dependencies -->
+
+		<dependency>
+
+			<groupId>javax.servlet</groupId>
+
+			<artifactId>javax.servlet-api</artifactId>
+
+			<version>3.1.0</version>
+
+			<scope>provided</scope>
+
+		</dependency>
+
+		<dependency>
+
+			<groupId>javax.servlet.jsp</groupId>
+
+			<artifactId>javax.servlet.jsp-api</artifactId>
+
+			<version>2.3.1</version>
+
+			<scope>provided</scope>
+
+		</dependency>
+
+		<dependency>
+
+			<groupId>jstl</groupId>
+
+			<artifactId>jstl</artifactId>
+
+			<version>1.2</version>
+
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-1.0-sdk</artifactId>
+			<version>2.0.13</version>
+		</dependency>
+
+		<!-- BEGIN: Added by Pena -->
+
+		<!-- This is needed in the Google Cloud side to be able to connect to a 
+			database -->
+		<dependency>
+			<groupId>com.google.cloud.sql</groupId>
+			<artifactId>mysql-socket-factory-connector-j-8</artifactId>
+			<version>1.6.3</version>
+		</dependency>
+
+		<!-- This is for pooling the database connections - differs pretty much 
+			from e.g. Tomcat's way' -->
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>4.0.3</version>
+		</dependency>
+
+		<!-- For connecting to MySQL database -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.29</version>
+		</dependency>
+
+		<!-- This dependency is needed for annotations (e.g. @Path, @Consumes, 
+			@Produces etc.) in the REST-class -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>2.27</version>
+		</dependency>
+
+		<!-- This is needed that your server can handle REST-class as a servlet. 
+			e.g. the class org.glassfish.jersey.servlet.ServletContainer in the project's 
+			web.xml file can be found from this library -->
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>2.27</version>
+		</dependency>
+
+		<!-- This is needed because of injections - server can inject our extra 
+			classes into resource -->
+		<dependency>
+			<groupId>org.glassfish.jersey.inject</groupId>
+			<artifactId>jersey-hk2</artifactId>
+			<version>2.27</version>
+		</dependency>
 
 
-<!-- This is needed to be able to connect to MySQL database. -->	
-   <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.29</version>
-    </dependency>
+		<!-- This is needed to be able to connect to MySQL database. -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.29</version>
+		</dependency>
 
-	<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink 
-		Eclipselink JPA Implementation 
-	-->
-	<dependency>
-	    <groupId>org.eclipse.persistence</groupId>
-	    <artifactId>eclipselink</artifactId>
-	    <version>2.5.0</version>
-	</dependency>
-	
-	<!-- 
-	If using Java 11 or newer add next two.
-	These are moved to servlet api and not any more in Java SE API 
-	 -->
-	<dependency>
-	    <groupId>javax.xml.bind</groupId>
-	    <artifactId>jaxb-api</artifactId>
-	    <version>2.3.0</version>
-	</dependency>
-	<dependency>
-	    <groupId>javax.activation</groupId>
-	    <artifactId>activation</artifactId>
-	    <version>1.1.1</version>
-	</dependency>
+		<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink 
+			Eclipselink JPA Implementation -->
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.5.0</version>
+		</dependency>
 
-<!-- END: Added by Pena -->   
-        
-        <!-- Test Dependencies -->
-            
-        <dependency>
-                  
-            <groupId>junit</groupId>
-                  
-            <artifactId>junit</artifactId>
-                  
-            <version>4.12</version>
-                  
-            <scope>test</scope>
-                
-        </dependency>
-          
-    </dependencies>
-      
-    <build>
-            
-        <!-- for hot reload of the web application-->
-            
-        <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
-            
-        <plugins>
-                  
-            <plugin>
-                        
-                <groupId>com.google.cloud.tools</groupId>
-                        
-                <artifactId>appengine-maven-plugin</artifactId>
-                        
-                <version>${appengine.maven.plugin.version}</version>
-                      
-            </plugin>
-                  
-      
-            <plugin>
-                        
-                <groupId>org.apache.maven.plugins</groupId>
-                        
-                <artifactId>maven-enforcer-plugin</artifactId>
-                        
-                <version>3.0.0-M3</version>
-                        
-                <executions>
-                              
-                    <execution>
-                                    
-                        <id>enforce-maven</id>
-                                    
-                        <goals>
-                                          
-                            <goal>enforce</goal>
-                                        
-                        </goals>
-                                    
-                        <configuration>
-                                          
-                            <rules>
-                                                
-                                <!-- appengine-maven-plugin requires Maven 3.5.0 or later -->
-                                                
-                                <requireMavenVersion>
-                                                      
-                                    <version>3.5.0</version>
-                                                    
-                                </requireMavenVersion>
-                                              
-                            </rules>
-                                        
-                        </configuration>
-                                  
-                    </execution>
-                            
-                </executions>
-                      
-            </plugin>
-                
-        </plugins>
-          
-    </build>
-    
+		<!-- If using Java 11 or newer add next two. These are moved to servlet 
+			api and not any more in Java SE API -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<!-- END: Added by Pena -->
+
+		<!-- Test Dependencies -->
+
+		<dependency>
+
+			<groupId>junit</groupId>
+
+			<artifactId>junit</artifactId>
+
+			<version>4.12</version>
+
+			<scope>test</scope>
+
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<!-- for hot reload of the web application -->
+
+		<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
+
+		<plugins>
+
+			<plugin>
+
+				<groupId>com.google.cloud.tools</groupId>
+
+				<artifactId>appengine-maven-plugin</artifactId>
+
+				<version>${appengine.maven.plugin.version}</version>
+
+			</plugin>
+
+
+			<plugin>
+
+				<groupId>org.apache.maven.plugins</groupId>
+
+				<artifactId>maven-enforcer-plugin</artifactId>
+
+				<version>3.0.0-M3</version>
+
+				<executions>
+
+					<execution>
+
+						<id>enforce-maven</id>
+
+						<goals>
+
+							<goal>enforce</goal>
+
+						</goals>
+
+						<configuration>
+
+							<rules>
+
+								<!-- appengine-maven-plugin requires Maven 3.5.0 or later -->
+
+								<requireMavenVersion>
+
+									<version>3.5.0</version>
+
+								</requireMavenVersion>
+
+							</rules>
+
+						</configuration>
+
+					</execution>
+
+				</executions>
+
+			</plugin>
+
+		</plugins>
+
+	</build>
+
 </project>

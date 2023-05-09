@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+<appengine-web-app
+	xmlns="http://appengine.google.com/ns/1.0">
 
-  <threadsafe>true</threadsafe>
-  <sessions-enabled>false</sessions-enabled>
-  <runtime>java8</runtime>
+	<threadsafe>true</threadsafe>
+	<sessions-enabled>false</sessions-enabled>
+	<runtime>java8</runtime>
 
-  <system-properties>
-	    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
-	    <property name="drivername" value="com.mysql.cj.jdbc.Driver"/>
-	    <property name="googleusername" value="root"/>
-	    <property name="googlepassword" value="password"/> <!-- we're not deploying our application so we dont really have to bother with this -->
-	    <property name="googledatabasename" value="dogpoolmysqlrest"/>
-	    <property name="localusername" value="team3"/>
-	    <property name="localpassword" value="team3"/>
-	    <property name="localdatabasename" value="projectdb"/>
-	    <property name="socketfactory" value="com.google.cloud.sql.mysql.SocketFactory"/>
-	    
-	    <!-- every google stuff is just for deploying, so we dont need them -->
-	    
-	<!-- the next value is from Google Cloud MySQL instance -->    
-	    <property name="cloudsqlinstance" value="restparamexamples:europe-west3:dogpoolmysqlrest"/>
-	    <property name="usessl" value="false"/>
+	<system-properties>
+		<property name="java.util.logging.config.file"
+			value="WEB-INF/logging.properties" />
+		<property name="drivername" value="com.mysql.cj.jdbc.Driver" />
+		<property name="googleusername" value="root" />
+		<property name="googlepassword" value="password" /> <!-- we're not deploying our application so we dont really have to bother 
+			with this -->
+		<property name="googledatabasename" value="dogpoolmysqlrest" />
+		<property name="localusername" value="team3" />
+		<property name="localpassword" value="team3" />
+		<property name="localdatabasename" value="projectdb" />
+		<property name="socketfactory"
+			value="com.google.cloud.sql.mysql.SocketFactory" />
+
+		<!-- every google stuff is just for deploying, so we dont need them -->
+
+		<!-- the next value is from Google Cloud MySQL instance -->
+		<property name="cloudsqlinstance"
+			value="restparamexamples:europe-west3:dogpoolmysqlrest" />
+		<property name="usessl" value="false" />
 	</system-properties>
 
 </appengine-web-app>

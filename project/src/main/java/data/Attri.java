@@ -13,6 +13,7 @@ public class Attri
     private int speed = 0;
     private int turnangle = 0;
     private int maxobs = 0;
+	private int id;
      
     //regular setters and getters:
     
@@ -50,4 +51,10 @@ public class Attri
     	this.turnangle = turnangle;				//parameterized constructor for ev3_service
     	this.maxobs = maxobs;
     }
+	public Attri(int id, int speed, int turnangle, int maxobs) {
+		this.id = id;
+		this.speed = speed; 
+		this.turnangle = turnangle; 
+		this.maxobs = maxobs;
+	}
 }

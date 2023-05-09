@@ -15,6 +15,8 @@
 	<li>${attri.speed} / ${attri.turnangle} / ${attri.maxobs} 
 </c:forEach>
 				<!-- this will help us see the attributes retrieved from the database (json string pretty much -->
+				
+			
 </ul>
 <h1> this is a test</h1>
 </body>
