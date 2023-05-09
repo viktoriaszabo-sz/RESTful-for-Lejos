@@ -36,6 +36,16 @@ input[type="submit"] {
             border-radius: 10px; 
             padding: 5px; 
         }
+        
+.button {
+  	display: inline-block;
+  	padding: 0.5em 1em;
+  	background-color: #007bff;
+  	color: #fff;
+  	border-radius: 0.25em;
+  	text-decoration: none;
+  	font-weight: bold;
+}
 </style>
 
 <h1>Update your input for Wall-E</h1>
