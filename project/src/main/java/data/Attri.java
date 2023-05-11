@@ -1,21 +1,14 @@
 package data;
 
-import lejos.hardware.sensor.EV3ColorSensor;
-import lejos.hardware.sensor.EV3UltrasonicSensor;
-
 //THIS IS FOR SHARING ATTRIBUTES FROM EV3 TO THE SERVICE
 
 public class Attri 
 {
-    //these variables are needed for the setters + getters --> the service works with setters and getters, so 
-	//we need to initialize our attributes as private - also name them different to be able to differentate them 
-	//from the attributes that we will connect them with in the DataExchange class (ex.: MAX_TURNANGLE, MAX_OBSTACLE) 
     private int speed = 0;
     private int turnangle = 0;
     private int maxobs = 0;
 	private int id;
      
-    //regular setters and getters:
     
     public  int getSpeed()
     {
@@ -44,7 +37,7 @@ public class Attri
     }
     
     
-    public Attri() {} //constructor
+    public Attri() {}
     public Attri(int speed, int turnangle, int maxobs)
     {
     	this.speed = speed;
