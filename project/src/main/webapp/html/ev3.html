@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Team 3 EV3</title>
 </head>
-<body>    <!-- This is our form that sends the new values to our service, then db, then robot -->
+<body>    <!-- This is our form that sends the new values to our service, then database, then robot -->
 
 <style>
 body {
@@ -47,7 +47,6 @@ input[type="submit"] {
 <p> If you wish to put commands into our robot's code, choose one of the followings:  </p>
 
 <form action = '/rest/project/add_ev' method = 'post'> <!-- this is the method that sends the input into the database  -->
-														<!-- see: Walle.java -->
 
     <b>Speed:</b> <input type = 'text' name = 'speed' value = '' placeholder='Default 300'><br><br>
     <b>Turn angle:</b> <input type = 'text' name = 'turnangle' value = '' placeholder='Default 220'><br><br>

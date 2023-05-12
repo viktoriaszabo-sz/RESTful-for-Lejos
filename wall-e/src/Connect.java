@@ -25,7 +25,7 @@ public class Connect extends Thread {
 
         while (!Button.ESCAPE.isDown()) {
             try {
-                URL url = new URL("http://192.168.0.111:8080/rest/project/read_by_lego");
+                URL url = new URL("http://192.168.0.111:8080/rest/project/read_by_lego"); //the actual method that reads the new input from the database
 
                 HttpURLConnection conn = null;
                 InputStream is = null;
@@ -50,8 +50,8 @@ public class Connect extends Thread {
 
                    
                     DE.setSpeed(value1I);
-                    DE.setTurnangle(value2I);	
-                    DE.setMaxobs(value3I);
+                    DE.setTurnangle(value2I);	//we set the new input values for further use 
+                    DE.setMaxobs(value3I);		//DataExchange class connects the other classes
                     
                     
                 } catch (IOException e) {
@@ -94,6 +94,4 @@ public class Connect extends Thread {
 	        }
         } // while loop   
     }
-
-	
 }

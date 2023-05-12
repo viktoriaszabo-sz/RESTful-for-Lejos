@@ -1,14 +1,11 @@
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 
-//testing CodeOwner feature by yours truly KatieRJ :)
 
 public class DataExchange 
 {
-    //public static final int SPEED = 300;
-    //public static final float BLACK_THRESHOLD = 0.1f;
 	
-public DataExchange() {} //constructor
+public DataExchange() {} 
     
     public DataExchange(int speed, int turnangle, int maxobs) 
     {

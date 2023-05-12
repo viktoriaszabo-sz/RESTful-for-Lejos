@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Print EV3 attributes</title>
+<title>Update EV3 attributes</title> 
 </head>
 <body>
 
@@ -51,34 +51,8 @@ input[type="submit"] {
 <h1>Update your input for Wall-E</h1>
 
  <form action = '/rest/project/updatewalle' method ='post' >
-
-<!-- 	ID: <input type = 'text' name = 'id' value = '${requestScope.walle.id}'><br>
-	Speed: <input type = 'text' name = 'speed' value = '${requestScope.walle.speed}'><br>
-	Turn angle: <input type = 'text' name = 'turnangle' value = '${requestScope.walle.turnangle}'><br>
-	Max obstacle count: <input type = 'text' name = 'maxobs' value = '${requestScope.walle.maxobs}'><br>
-
-	<input type = 'submit' name = 'ok' value = 'Update'><br>
- -->
  
-		<%/*
-		Connection conn=null;
-		//Attri d = new Attri();
-		try {
-    conn = Connections.getConnection();  //connection to db / mysql
-    PreparedStatement pstmt = conn.prepareStatement("select * from walle order by id desc");
-    ResultSet RS = pstmt.executeQuery();
-    if (RS.next()) {
-        int id = RS.getInt("id");
-*/%>
-    <!-- ID: <input name="id" value="${id}" readonly="readonly"><br>  -->
-    <!-- ID: <input type="text" name="id"><br> -->
-<% 
-/*
-    }
-} catch (SQLException e) {
-    e.printStackTrace();
-}
-*/%>
+		<!-- no need for ID input because the update method from the Walle service will update the latest input by default -->
 		Speed: <input type="text" name="speed"><br>
 		Turn angle: <input type="text" name="turnangle"><br>
 		Max obstacle count: <input type="text" name="maxobs"><br>
@@ -90,12 +64,5 @@ input[type="submit"] {
 
 <img src="/html/images/Pixar-Wall-E.jpg" alt="robot" style="width: 750px; height: 450px;">
 
-<ul>
-<!-- 
-<c:forEach var="attri" items="${requestScope.attri}">
-	<li>${attri.id} /${attri.speed} / ${attri.turnangle} / ${attri.maxobs} 
-</c:forEach>  -->		<!-- this will help us see the attributes posted into the database (json string pretty much) -->
-
-</ul>
 </body>
 </html>

@@ -6,43 +6,27 @@ import lejos.hardware.motor.Motor;
 import lejos.robotics.Color;
 import lejos.utility.Delay;
 
-
-//testing codeowner file permissions
-
-//testing codeowner
-
-
 public class LineFollower extends Thread {
 	
-	//DataExchange DE = new DataExchange();
-	
-	
-	/*public int SPEED = DE.getSpeed();
-	public int TURN_ANGLE = DE.getTurnangle();
-	public final int MAX_OBSTACLES = DE.getMaxobs();
-	 */
-    
-    public final float BLACK_THRESHOLD = 0.1f;
+	public final float BLACK_THRESHOLD = 0.1f;
 
     DataExchange DE;
-    //Connect connect;
     
     public LineFollower(DataExchange DE) { 
     	this.DE = DE; 
-    	//this.connect = connect;
     } 
 
     public void run()
     {
-    	int SPEED = 300;// = DE.getSpeed();
-    	int TURN_ANGLE = 220;//DE.getTurnangle();
-    	final int MAX_OBSTACLES = 2;//DE.getMaxobs();
+    	int SPEED = 300;
+    	int TURN_ANGLE = 220;				//we initialize the original values first, then use the altered values from the database
+    	final int MAX_OBSTACLES = 2;
     	
     	System.out.println("INITIALIZING OPERATION WALL-E");
     	
     	int obstacleCount = 0;
     	
-        while(!Button.ESCAPE.isDown() || obstacleCount < DE.getMaxobs() ) 
+        while(!Button.ESCAPE.isDown() || obstacleCount < DE.getMaxobs() ) //new values read from the web service database
         {
         	float[] colorSample = DataExchange.colorSample;
             
@@ -83,13 +67,6 @@ public class LineFollower extends Thread {
                     Motor.B.stop();
                     interrupt();
                     if (LineFollower.interrupted()) {
-                        
-                    	/*Celebration celeb = new Celebration();
-                    	Destroy destroy = new Destroy ();
-                    	
-                    	celeb.start();
-                        destroy.start();
-                        return;*/
                     	 
                     	System.out.println("DISRESPECT YOUR		SURROUNDINGS!");
                     	
@@ -109,22 +86,18 @@ public class LineFollower extends Thread {
                     }
                 }
             	Motor.A.setSpeed(DE.getSpeed());
-            	Motor.B.setSpeed(DE.getSpeed()); // it adjust the wheels into straightforward position, bc linefollower confused it before
-            	Motor.A.forward(); //we set it to move forward just a bit to make sure it gets straight
+            	Motor.B.setSpeed(DE.getSpeed()); 
+            	Motor.A.forward();
                 Motor.B.forward();
                 Delay.msDelay(75);
-                //Sound.twoBeeps();
                 Motor.A.stop();
                 Motor.B.stop();
                 //actual avoidance happening
                 Motor.A.rotate(-DE.getTurnangle()); //turns out sharply so that it can avoid the obstacle
-                Delay.msDelay(10); 			//       actual avoidance happening
-                Motor.A.setSpeed(DE.getSpeed()/4);  //sets the wheels for a turning angle 
+                Delay.msDelay(10); 			
+                Motor.A.setSpeed(DE.getSpeed()/4);  
                 Motor.B.setSpeed(DE.getSpeed());
-                //Motor.A.rotate(-TURN_ANGLE/4);
             }
-        //Motor.A.close();
-        //Motor.B.close();
         } 
     }
 }
